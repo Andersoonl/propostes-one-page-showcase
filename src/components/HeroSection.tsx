@@ -20,10 +20,10 @@ const HeroSection = () => {
       <div className="relative z-10 container text-center px-4">
         <div className="max-w-4xl mx-auto">
           <p 
-            className="text-primary font-medium text-lg md:text-xl mb-4 opacity-0 animate-fade-up"
+            className="text-secondary font-medium text-lg md:text-xl mb-4 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.1s" }}
           >
-            Propostes — Qualidade em Concreto
+            Propostes — Soluções em Concreto
           </p>
           
           <h1 
@@ -31,7 +31,7 @@ const HeroSection = () => {
             style={{ animationDelay: "0.2s" }}
           >
             Conheça Nossos
-            <span className="block text-primary">Produtos</span>
+            <span className="block text-secondary">Produtos</span>
           </h1>
           
           <p 
@@ -44,7 +44,7 @@ const HeroSection = () => {
           
           <a
             href="#produtos"
-            className="inline-flex items-center gap-2 bg-primary hover:bg-orange-dark text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-orange hover:-translate-y-1 opacity-0 animate-fade-up"
+            className="inline-flex items-center gap-2 bg-secondary hover:bg-turquoise-dark text-secondary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-accent hover:-translate-y-1 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.4s" }}
           >
             Veja Produtos

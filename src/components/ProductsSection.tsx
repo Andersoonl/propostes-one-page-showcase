@@ -40,7 +40,7 @@ const ProductsSection = () => {
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
-          <p className="text-primary font-medium mb-3">Nosso Catálogo</p>
+          <p className="text-secondary font-medium mb-3">Nosso Catálogo</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-5">
             Produtos de Qualidade
           </h2>

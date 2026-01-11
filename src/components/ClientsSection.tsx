@@ -13,7 +13,7 @@ const ClientsSection = () => {
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
-          <p className="text-primary font-medium mb-3">Parcerias de Sucesso</p>
+          <p className="text-secondary font-medium mb-3">Parcerias de Sucesso</p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-5">
             Clientes & Parceiros
           </h2>
@@ -28,11 +28,11 @@ const ClientsSection = () => {
           {clients.map((client, index) => (
             <div
               key={client.name}
-              className="group bg-card border border-border rounded-xl p-6 md:p-8 flex flex-col items-center justify-center hover:border-primary/50 hover:shadow-md transition-all duration-300 opacity-0 animate-scale-in"
+              className="group bg-card border border-border rounded-xl p-6 md:p-8 flex flex-col items-center justify-center hover:border-secondary/50 hover:shadow-md transition-all duration-300 opacity-0 animate-scale-in"
               style={{ animationDelay: `${0.05 * index}s` }}
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-concrete-light rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors duration-300">
-                <span className="text-xl md:text-2xl font-bold text-secondary group-hover:text-primary transition-colors duration-300">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-muted rounded-full flex items-center justify-center mb-4 group-hover:bg-secondary/10 transition-colors duration-300">
+                <span className="text-xl md:text-2xl font-bold text-primary group-hover:text-secondary transition-colors duration-300">
                   {client.initials}
                 </span>
               </div>
@@ -46,7 +46,7 @@ const ClientsSection = () => {
         {/* Trust Message */}
         <div className="mt-14 md:mt-20 text-center">
           <p className="text-muted-foreground text-lg">
-            Mais de <span className="text-primary font-bold">100+ projetos</span> realizados com sucesso em Fortaleza e região metropolitana.
+            Mais de <span className="text-secondary font-bold">100+ projetos</span> realizados com sucesso em Fortaleza e região metropolitana.
           </p>
         </div>
       </div>

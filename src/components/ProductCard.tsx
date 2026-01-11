@@ -8,11 +8,11 @@ interface ProductCardProps {
 
 const ProductCard = ({ title, description, Icon }: ProductCardProps) => {
   return (
-    <div className="group bg-card border border-border rounded-xl p-6 md:p-8 hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <div className="w-14 h-14 md:w-16 md:h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+    <div className="group bg-card border border-border rounded-xl p-6 md:p-8 hover:border-secondary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+      <div className="w-14 h-14 md:w-16 md:h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
         <Icon 
           size={28} 
-          className="text-primary group-hover:text-primary-foreground transition-colors duration-300" 
+          className="text-secondary group-hover:text-secondary-foreground transition-colors duration-300" 
         />
       </div>
       
@@ -26,7 +26,7 @@ const ProductCard = ({ title, description, Icon }: ProductCardProps) => {
       
       <a
         href="#qualidade"
-        className="inline-flex items-center text-primary font-medium hover:underline underline-offset-4 transition-all group-hover:gap-2"
+        className="inline-flex items-center text-secondary font-medium hover:underline underline-offset-4 transition-all group-hover:gap-2"
       >
         Saiba mais
         <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
