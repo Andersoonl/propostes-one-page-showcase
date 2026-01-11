@@ -55,9 +55,15 @@ export default {
           light: "hsl(var(--concrete-light))",
           dark: "hsl(var(--concrete-dark))",
         },
-        orange: {
-          DEFAULT: "hsl(var(--orange))",
-          dark: "hsl(var(--orange-dark))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          dark: "hsl(var(--navy-dark))",
+        },
+        turquoise: {
+          DEFAULT: "hsl(var(--turquoise))",
+          light: "hsl(var(--turquoise-light))",
+          dark: "hsl(var(--turquoise-dark))",
         },
       },
       borderRadius: {
@@ -69,7 +75,7 @@ export default {
         'sm': 'var(--shadow-sm)',
         'md': 'var(--shadow-md)',
         'lg': 'var(--shadow-lg)',
-        'orange': 'var(--shadow-orange)',
+        'accent': 'var(--shadow-accent)',
       },
       keyframes: {
         "accordion-down": {
