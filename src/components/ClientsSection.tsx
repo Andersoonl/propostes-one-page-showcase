@@ -1,7 +1,7 @@
 const clients = [
   { name: "Construtora Alpha", initials: "CA" },
   { name: "Engenharia Beta", initials: "EB" },
-  { name: "Obras Gamma", initials: "OG" },
+  { name: "Gama", initials: "OG" },
   { name: "Projeto Delta", initials: "PD" },
   { name: "Construções Epsilon", initials: "CE" },
   { name: "Empreiteira Zeta", initials: "EZ" },
