@@ -1,8 +1,22 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Box, Grid3X3, Zap, Minus, CircleDot, Plus } from "lucide-react";
+import { ArrowLeft, Box, Grid3X3, Zap, Minus, CircleDot } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+// Import product images - Família 9
+import blocoVedacao9x19x39 from "@/assets/products/bloco-vedacao-9x19x39.png";
+import canaletaInteira9x19x39 from "@/assets/products/canaleta-inteira-9x19x39.png";
+import meioBloco9x19x19 from "@/assets/products/meio-bloco-9x19x19.png";
+
+// Import product images - Família 14
+import blocoVedacao14x19x39 from "@/assets/products/bloco-vedacao-14x19x39.png";
+import blocoEstrutural14x19x39 from "@/assets/products/bloco-estrutural-14x19x39.png";
+import canaletaInteira14x19x39 from "@/assets/products/canaleta-inteira-14x19x39.png";
+import compensador14x19x4 from "@/assets/products/compensador-14x19x4.png";
+import complemento14x19x9 from "@/assets/products/complemento-14x19x9.png";
+import meioBlocoEstrutural14x19x19 from "@/assets/products/meio-bloco-estrutural-14x19x19.png";
+import meioBlocoVedacao14x19x19 from "@/assets/products/meio-bloco-vedacao-14x19x19.png";
 
 const productCategories = [
   {
@@ -11,9 +25,9 @@ const productCategories = [
     description: "Blocos de vedação e estruturais com 9cm de largura. Ideais para construções econômicas e rápidas.",
     icon: Box,
     products: [
-      { name: "Bloco de Vedação", dimensions: "9x19x39", specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Meio Bloco", dimensions: "9x19x19", specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "19cm" } },
-      { name: "Canaleta Inteira", dimensions: "9x19x39", specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Bloco de Vedação", dimensions: "9x19x39", image: blocoVedacao9x19x39, specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Meio Bloco", dimensions: "9x19x19", image: meioBloco9x19x19, specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "19cm" } },
+      { name: "Canaleta Inteira", dimensions: "9x19x39", image: canaletaInteira9x19x39, specs: { resistencia: "3MPa", largura: "9cm", altura: "19cm", comprimento: "39cm" } },
     ],
   },
   {
@@ -22,13 +36,13 @@ const productCategories = [
     description: "Blocos estruturais e de vedação com 14cm de largura. Maior resistência para obras de médio porte.",
     icon: Box,
     products: [
-      { name: "Bloco de Vedação", dimensions: "14x19x39", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Meio Bloco Vedação", dimensions: "14x19x19", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
-      { name: "Bloco Estrutural", dimensions: "14x19x39", specs: { resistencia: "6MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Canaleta Inteira", dimensions: "14x19x39", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Canaleta Meia", dimensions: "14x19x19", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
-      { name: "Compensador A", dimensions: "14x19x9", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "9cm" } },
-      { name: "Compensador B", dimensions: "14x19x4", specs: { resistencia: "4MPa", largura: "14cm", altura: "19cm", comprimento: "4cm" } },
+      { name: "Bloco de Vedação", dimensions: "14x19x39", image: blocoVedacao14x19x39, specs: { resistencia: "3 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Meio Bloco Vedação", dimensions: "14x19x19", image: meioBlocoVedacao14x19x19, specs: { resistencia: "3 MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
+      { name: "Bloco Estrutural", dimensions: "14x19x39", image: blocoEstrutural14x19x39, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Meio Bloco Estrutural", dimensions: "14x19x19", image: meioBlocoEstrutural14x19x19, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
+      { name: "Canaleta Inteira", dimensions: "14x19x39", image: canaletaInteira14x19x39, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Complemento", dimensions: "14x19x9", image: complemento14x19x9, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "9cm" } },
+      { name: "Compensador", dimensions: "14x19x4", image: compensador14x19x4, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "4cm" } },
     ],
   },
   {
@@ -168,21 +182,40 @@ const Produtos = () => {
                 {category.products.map((product, productIndex) => (
                   <div
                     key={`${category.id}-${productIndex}`}
-                    className="bg-card border border-border rounded-xl p-5 hover:border-secondary/50 hover:shadow-md transition-all duration-300"
+                    className="bg-card border border-border rounded-xl overflow-hidden hover:border-secondary/50 hover:shadow-md transition-all duration-300"
                   >
-                    <h3 className="font-semibold text-foreground mb-1">
-                      {product.name}
-                    </h3>
-                    <p className="text-secondary font-medium text-sm mb-3">
-                      {product.dimensions}
-                    </p>
-                    <div className="space-y-1.5 text-sm text-muted-foreground">
-                      {Object.entries(product.specs).map(([key, value]) => (
-                        <div key={key} className="flex justify-between">
-                          <span className="capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                          <span className="font-medium text-foreground">{String(value)}</span>
-                        </div>
-                      ))}
+                    {/* Product Image */}
+                    {'image' in product && product.image ? (
+                      <div className="aspect-square bg-muted/30 flex items-center justify-center p-4">
+                        <img 
+                          src={product.image} 
+                          alt={`${product.name} ${product.dimensions}`}
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className="aspect-square bg-muted/30 flex items-center justify-center">
+                        <Box size={64} className="text-muted-foreground/30" />
+                      </div>
+                    )}
+                    
+                    {/* Product Info */}
+                    <div className="p-5">
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {product.name}
+                      </h3>
+                      <p className="text-secondary font-medium text-sm mb-3">
+                        {product.dimensions}
+                      </p>
+                      <div className="space-y-1.5 text-sm text-muted-foreground">
+                        {Object.entries(product.specs).map(([key, value]) => (
+                          <div key={key} className="flex justify-between">
+                            <span className="capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
+                            <span className="font-medium text-foreground">{String(value)}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}
