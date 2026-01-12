@@ -18,6 +18,52 @@ import complemento14x19x9 from "@/assets/products/complemento-14x19x9.png";
 import meioBlocoEstrutural14x19x19 from "@/assets/products/meio-bloco-estrutural-14x19x19.png";
 import meioBlocoVedacao14x19x19 from "@/assets/products/meio-bloco-vedacao-14x19x19.png";
 
+// Import product images - Família 19
+import blocoEstrutural19x19x39 from "@/assets/products/Bloco Estrutural 19x19x39.png";
+import meioBloco19x19x19 from "@/assets/products/Meio Bloco 19x19x19.png";
+import canaletaInteira19x19x39 from "@/assets/products/Canaleta Inteira 19x19x39.png";
+
+// Import product images - Blocos Especiais (14x19)
+import blocoEstrutural14x19x29 from "@/assets/products/Bloco Estrutural 14x19x29.png";
+import blocoEstrutural14x19x44 from "@/assets/products/Bloco Estrutural 14x19x44.png";
+import canaletaInteira14x19x29 from "@/assets/products/Canaleta Inteira 14x19x29.png";
+import meiaCanaleta14x19x14 from "@/assets/products/Meia Canaleta 14x19x14.png";
+import meiaCanaletaBaixa14x9x14 from "@/assets/products/Meia Canaleta Baixa 14x9x14.png";
+import meioBloco14x19x14 from "@/assets/products/Meio Bloco 14x19x14.png";
+import meioJota14 from "@/assets/products/Meio Jota 14x9-19x14.png";
+
+// Import product images - Pisos
+import pisoRetangularH4 from "@/assets/products/Piso Retangular  H4.png";
+import pisoRetangularH6 from "@/assets/products/Piso Retangular H6.png";
+import pisoRetangularH6Drenante from "@/assets/products/Piso Retangular H6 Drenante.png";
+import pisoRetangularH8 from "@/assets/products/Piso Retangular H8.png";
+import pisoRetangularH8Drenante from "@/assets/products/Piso Retangular H8 Drenante.png";
+import pisoUnisteinH6 from "@/assets/products/Piso Unistein H6.png";
+import pisoUnisteinH6Drenante from "@/assets/products/Piso Unistein H6 Drenante.png";
+import pisoUnisteinH8 from "@/assets/products/Piso Unistein H8.png";
+import pisoUnisteinH8Drenante from "@/assets/products/Piso Unistein H8 Drenante.png";
+import pisoUnisteinH10 from "@/assets/products/Piso Unistein H10.png";
+import pisoCitypalc from "@/assets/products/Piso Citypalc.png";
+import pisoCitypalcDrenante from "@/assets/products/Piso Citypalc Drenante.png";
+import pisograma from "@/assets/products/Pisograma H8.png";
+
+// Import product images - Meio Fio
+import meioFio1 from "@/assets/products/Meio Fio de Concreto.png";
+import meioFio2 from "@/assets/products/Meio Fio de Concreto 2.png";
+
+// Import product images - Tubos e Caixas
+import manilha from "@/assets/products/Manilha Ponto e Bolsa.png";
+import caixaPassagem from "@/assets/products/Caixa de Passagem com e sem tampa.png";
+import tampaPassagem from "@/assets/products/Tampa para Caixa de Passagem.png";
+
+// Import product images - Postes e Cruzetas
+import posteCircular from "@/assets/products/Poste Circular.png";
+import posteDuploT from "@/assets/products/Poste Duplo T.png";
+import cruzetaNormal from "@/assets/products/Cruzeta Normal 1,90m.png";
+import cruzetaBeco from "@/assets/products/Cruzeta Beco 1,70m.png";
+import cruzetaMeioBeco from "@/assets/products/Cruzeta Meio Beco 1,90m.png";
+import cruzetaReta from "@/assets/products/Cruzeta Reta 2,35m.png";
+
 const productCategories = [
   {
     id: "blocos-9",
@@ -39,8 +85,15 @@ const productCategories = [
       { name: "Bloco de Vedação", dimensions: "14x19x39", image: blocoVedacao14x19x39, specs: { resistencia: "3 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
       { name: "Meio Bloco Vedação", dimensions: "14x19x19", image: meioBlocoVedacao14x19x19, specs: { resistencia: "3 MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
       { name: "Bloco Estrutural", dimensions: "14x19x39", image: blocoEstrutural14x19x39, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Bloco Estrutural", dimensions: "14x19x29", image: blocoEstrutural14x19x29, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "29cm" } },
+      { name: "Bloco Estrutural", dimensions: "14x19x44", image: blocoEstrutural14x19x44, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "44cm" } },
       { name: "Meio Bloco Estrutural", dimensions: "14x19x19", image: meioBlocoEstrutural14x19x19, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "19cm" } },
+      { name: "Meio Bloco", dimensions: "14x19x14", image: meioBloco14x19x14, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "14cm" } },
       { name: "Canaleta Inteira", dimensions: "14x19x39", image: canaletaInteira14x19x39, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Canaleta Inteira", dimensions: "14x19x29", image: canaletaInteira14x19x29, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "29cm" } },
+      { name: "Meia Canaleta", dimensions: "14x19x14", image: meiaCanaleta14x19x14, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "14cm" } },
+      { name: "Meia Canaleta Baixa", dimensions: "14x9x14", image: meiaCanaletaBaixa14x9x14, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "9cm", comprimento: "14cm" } },
+      { name: "Meio Jota", dimensions: "14x9-19x14", image: meioJota14, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "9-19cm", comprimento: "14cm" } },
       { name: "Complemento", dimensions: "14x19x9", image: complemento14x19x9, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "9cm" } },
       { name: "Compensador", dimensions: "14x19x4", image: compensador14x19x4, specs: { resistencia: "4,5 a 16 MPa", largura: "14cm", altura: "19cm", comprimento: "4cm" } },
     ],
@@ -51,20 +104,9 @@ const productCategories = [
     description: "Blocos estruturais com 19cm de largura. Alta resistência para grandes obras.",
     icon: Box,
     products: [
-      { name: "Bloco Estrutural", dimensions: "19x19x39", specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Meio Bloco", dimensions: "19x19x19", specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "19cm" } },
-      { name: "Canaleta Inteira", dimensions: "19x19x39", specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "39cm" } },
-    ],
-  },
-  {
-    id: "blocos-29",
-    title: "Blocos - Família 29",
-    description: "Blocos especiais com 29cm de largura. Máxima resistência e isolamento térmico.",
-    icon: Box,
-    products: [
-      { name: "Bloco Estrutural", dimensions: "29x19x39", specs: { resistencia: "8MPa", largura: "29cm", altura: "19cm", comprimento: "39cm" } },
-      { name: "Meio Bloco", dimensions: "29x19x19", specs: { resistencia: "8MPa", largura: "29cm", altura: "19cm", comprimento: "19cm" } },
-      { name: "Canaleta Inteira", dimensions: "29x19x39", specs: { resistencia: "8MPa", largura: "29cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Bloco Estrutural", dimensions: "19x19x39", image: blocoEstrutural19x19x39, specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "39cm" } },
+      { name: "Meio Bloco", dimensions: "19x19x19", image: meioBloco19x19x19, specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "19cm" } },
+      { name: "Canaleta Inteira", dimensions: "19x19x39", image: canaletaInteira19x19x39, specs: { resistencia: "6MPa", largura: "19cm", altura: "19cm", comprimento: "39cm" } },
     ],
   },
   {
@@ -73,21 +115,19 @@ const productCategories = [
     description: "Pisos pré-moldados para pavimentação de calçadas, estacionamentos e áreas externas.",
     icon: Grid3X3,
     products: [
-      { name: "Piso Retangular", dimensions: "10x20x6", specs: { resistencia: "35MPa", largura: "10cm", altura: "6cm", comprimento: "20cm" } },
-      { name: "Piso Retangular", dimensions: "10x20x8", specs: { resistencia: "35MPa", largura: "10cm", altura: "8cm", comprimento: "20cm" } },
-      { name: "Piso 16 Faces", dimensions: "20x20x6", specs: { resistencia: "35MPa", largura: "20cm", altura: "6cm", comprimento: "20cm" } },
-      { name: "Piso Sextavado", dimensions: "25x25x6", specs: { resistencia: "35MPa", largura: "25cm", altura: "6cm", comprimento: "25cm" } },
-    ],
-  },
-  {
-    id: "pisos-permeaveis",
-    title: "Pisos Permeáveis",
-    description: "Pisos com alta permeabilidade para drenagem sustentável de águas pluviais.",
-    icon: Grid3X3,
-    products: [
-      { name: "Piso Permeável", dimensions: "10x20x6", specs: { resistencia: "35MPa", largura: "10cm", altura: "6cm", comprimento: "20cm" } },
-      { name: "Piso Permeável", dimensions: "10x20x8", specs: { resistencia: "35MPa", largura: "10cm", altura: "8cm", comprimento: "20cm" } },
-      { name: "Grama Block", dimensions: "40x60x8", specs: { resistencia: "35MPa", largura: "40cm", altura: "8cm", comprimento: "60cm" } },
+      { name: "Piso Retangular", dimensions: "H4", image: pisoRetangularH4, specs: { resistencia: "35MPa", altura: "4cm", tipo: "Retangular" } },
+      { name: "Piso Retangular", dimensions: "H6", image: pisoRetangularH6, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Retangular" } },
+      { name: "Piso Retangular Drenante", dimensions: "H6", image: pisoRetangularH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" } },
+      { name: "Piso Retangular", dimensions: "H8", image: pisoRetangularH8, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Retangular" } },
+      { name: "Piso Retangular Drenante", dimensions: "H8", image: pisoRetangularH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" } },
+      { name: "Piso Unistein", dimensions: "H6", image: pisoUnisteinH6, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Unistein" } },
+      { name: "Piso Unistein Drenante", dimensions: "H6", image: pisoUnisteinH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" } },
+      { name: "Piso Unistein", dimensions: "H8", image: pisoUnisteinH8, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Unistein" } },
+      { name: "Piso Unistein Drenante", dimensions: "H8", image: pisoUnisteinH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" } },
+      { name: "Piso Unistein", dimensions: "H10", image: pisoUnisteinH10, specs: { resistencia: "35MPa", altura: "10cm", tipo: "Unistein" } },
+      { name: "Piso Citypalc", dimensions: "Padrão", image: pisoCitypalc, specs: { resistencia: "35MPa", tipo: "Citypalc" } },
+      { name: "Piso Citypalc Drenante", dimensions: "Padrão", image: pisoCitypalcDrenante, specs: { resistencia: "35MPa", tipo: "Drenante" } },
+      { name: "Pisograma", dimensions: "H8", image: pisograma, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Gramado" } },
     ],
   },
   {
@@ -96,8 +136,8 @@ const productCategories = [
     description: "Meio-fios pré-moldados para urbanização e delimitação de vias.",
     icon: Minus,
     products: [
-      { name: "Meio Fio Padrão", dimensions: "100x30x12", specs: { resistencia: "35MPa", largura: "12cm", altura: "30cm", comprimento: "100cm" } },
-      { name: "Meio Fio Jardim", dimensions: "50x20x8", specs: { resistencia: "35MPa", largura: "8cm", altura: "20cm", comprimento: "50cm" } },
+      { name: "Meio Fio de Concreto", dimensions: "Padrão", image: meioFio1, specs: { resistencia: "35MPa", tipo: "Padrão" } },
+      { name: "Meio Fio de Concreto", dimensions: "Tipo 2", image: meioFio2, specs: { resistencia: "35MPa", tipo: "Alternativo" } },
     ],
   },
   {
@@ -106,10 +146,9 @@ const productCategories = [
     description: "Tubos e caixas para drenagem, saneamento e infraestrutura urbana.",
     icon: CircleDot,
     products: [
-      { name: "Tubo Concreto", dimensions: "Ø30x100", specs: { resistencia: "Classe PA1", diametro: "30cm", comprimento: "100cm" } },
-      { name: "Tubo Concreto", dimensions: "Ø40x100", specs: { resistencia: "Classe PA1", diametro: "40cm", comprimento: "100cm" } },
-      { name: "Tubo Concreto", dimensions: "Ø60x100", specs: { resistencia: "Classe PA1", diametro: "60cm", comprimento: "100cm" } },
-      { name: "Caixa de Passagem", dimensions: "60x60x60", specs: { resistencia: "Classe PA1", dimensoes: "60x60x60cm" } },
+      { name: "Manilha Ponta e Bolsa", dimensions: "Diversos diâmetros", image: manilha, specs: { resistencia: "Classe PA1", tipo: "Ponta e Bolsa" } },
+      { name: "Caixa de Passagem", dimensions: "Com e sem tampa", image: caixaPassagem, specs: { tipo: "Passagem", material: "Concreto" } },
+      { name: "Tampa para Caixa", dimensions: "Padrão", image: tampaPassagem, specs: { tipo: "Tampa", material: "Concreto" } },
     ],
   },
   {
@@ -118,11 +157,12 @@ const productCategories = [
     description: "Postes e cruzetas de concreto para redes de distribuição elétrica.",
     icon: Zap,
     products: [
-      { name: "Poste Circular", dimensions: "7m - 150daN", specs: { resistencia: "150daN", altura: "7m", tipo: "Circular" } },
-      { name: "Poste Circular", dimensions: "9m - 300daN", specs: { resistencia: "300daN", altura: "9m", tipo: "Circular" } },
-      { name: "Poste Circular", dimensions: "11m - 600daN", specs: { resistencia: "600daN", altura: "11m", tipo: "Circular" } },
-      { name: "Cruzeta", dimensions: "90cm", specs: { comprimento: "90cm", tipo: "Padrão COELCE" } },
-      { name: "Cruzeta", dimensions: "2m", specs: { comprimento: "2m", tipo: "Padrão COELCE" } },
+      { name: "Poste Circular", dimensions: "Diversos tamanhos", image: posteCircular, specs: { tipo: "Circular", material: "Concreto Armado" } },
+      { name: "Poste Duplo T", dimensions: "Diversos tamanhos", image: posteDuploT, specs: { tipo: "Duplo T", material: "Concreto Armado" } },
+      { name: "Cruzeta Normal", dimensions: "1,90m", image: cruzetaNormal, specs: { comprimento: "1,90m", tipo: "Normal" } },
+      { name: "Cruzeta Beco", dimensions: "1,70m", image: cruzetaBeco, specs: { comprimento: "1,70m", tipo: "Beco" } },
+      { name: "Cruzeta Meio Beco", dimensions: "1,90m", image: cruzetaMeioBeco, specs: { comprimento: "1,90m", tipo: "Meio Beco" } },
+      { name: "Cruzeta Reta", dimensions: "2,35m", image: cruzetaReta, specs: { comprimento: "2,35m", tipo: "Reta" } },
     ],
   },
 ];
