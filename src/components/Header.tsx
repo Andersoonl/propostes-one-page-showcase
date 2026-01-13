@@ -6,6 +6,7 @@ import logoPropostes from "@/assets/logo-propostes.png";
 const navLinks = [
   { label: "Início", href: "/" },
   { label: "Produtos", href: "/produtos" },
+  { label: "Sobre Nós", href: "/sobre-nos" },
   { label: "Clientes & Parceiros", href: "/#clientes" },
   { label: "Qualidade", href: "/#qualidade" },
 ];
@@ -29,6 +30,7 @@ const Header = () => {
   const isActiveLink = (href: string) => {
     if (href === "/") return location.pathname === "/";
     if (href === "/produtos") return location.pathname === "/produtos";
+    if (href === "/sobre-nos") return location.pathname === "/sobre-nos";
     return false;
   };
 
@@ -40,7 +42,7 @@ const Header = () => {
           <img 
             src={logoPropostes} 
             alt="Propostes - Soluções em Concreto" 
-            className="h-10 md:h-12 w-auto"
+            className="h-14 md:h-20 w-auto"
           />
         </Link>
 

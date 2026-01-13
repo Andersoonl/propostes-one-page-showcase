@@ -1,5 +1,5 @@
 import { ArrowDown } from "lucide-react";
-import heroImage from "@/assets/hero-concrete.jpg";
+import heroImage from "@/assets/drone/Propostes Drone 05 cut.jpeg";
 
 const HeroSection = () => {
   return (
@@ -20,23 +20,23 @@ const HeroSection = () => {
       <div className="relative z-10 container text-center px-4">
         <div className="max-w-4xl mx-auto">
           <p 
-            className="text-secondary font-medium text-lg md:text-xl mb-4 opacity-0 animate-fade-up"
+            className="text-secondary font-medium text-base md:text-lg mb-3 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.1s" }}
           >
             Propostes — Soluções em Concreto
           </p>
           
           <h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.2s" }}
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 md:mb-6 leading-tight opacity-0 animate-fade-up"
+            style={{ animationDelay: "0s" }}
           >
             Conheça Nossos
             <span className="block text-secondary">Produtos</span>
           </h1>
           
           <p 
-            className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.3s" }}
+            className="text-base md:text-lg text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up"
+            style={{ animationDelay: "0.1s" }}
           >
             Soluções em pré-moldados de concreto com qualidade certificada. 
             Pisos, blocos, postes e muito mais para sua obra.
@@ -44,8 +44,8 @@ const HeroSection = () => {
           
           <a
             href="#produtos"
-            className="inline-flex items-center gap-2 bg-secondary hover:bg-turquoise-dark text-secondary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-accent hover:-translate-y-1 opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.4s" }}
+            className="inline-flex items-center gap-2 bg-secondary hover:bg-turquoise-dark text-secondary-foreground font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-300 hover:shadow-accent hover:-translate-y-1 opacity-0 animate-fade-up"
+            style={{ animationDelay: "0.2s" }}
           >
             Veja Produtos
             <ArrowDown size={20} />

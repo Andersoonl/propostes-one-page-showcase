@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, MessageCircle, Youtube } from "lucide-react";
 import logoPropostes from "@/assets/logo-propostes.png";
 
 const Footer = () => {
@@ -17,32 +17,38 @@ const Footer = () => {
             </div>
             <p className="text-white/60 mb-6 max-w-md leading-relaxed">
               Fabricante de produtos pré-moldados em concreto de alta qualidade. 
-              Há mais de 20 anos oferecendo soluções para construção civil em 
+              Há mais de 30 anos oferecendo soluções para construção civil em 
               Fortaleza e região.
             </p>
             
             {/* Social Links */}
             <div className="flex gap-3">
               <a 
-                href="#" 
+                href="https://www.facebook.com/propostes/?locale=pt_BR" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/propostes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
               </a>
               <a 
-                href="#" 
+                href="https://www.youtube.com/watch?v=ckS5waT7xk0" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-secondary transition-colors duration-300"
-                aria-label="LinkedIn"
+                aria-label="YouTube"
               >
-                <Linkedin size={18} />
+                <Youtube size={18} />
               </a>
             </div>
           </div>
@@ -62,6 +68,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a href="/sobre-nos" className="text-white/60 hover:text-secondary transition-colors">
+                  Sobre Nós
+                </a>
+              </li>
+              <li>
                 <a href="#clientes" className="text-white/60 hover:text-secondary transition-colors">
                   Clientes & Parceiros
                 </a>
@@ -76,27 +87,36 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold text-lg mb-5">Contato</h4>
+            <h4 className="font-semibold text-lg mb-5">Contatos e Localização</h4>
             <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Phone size={18} className="text-secondary mt-1 flex-shrink-0" />
+                <span className="text-white/60">
+                  <a href="tel:+558534634578" className="hover:text-secondary transition-colors">(85) 3463-4578</a>
+                  {" | "}
+                  <a href="tel:+558534634580" className="hover:text-secondary transition-colors">(85) 3463-4580</a>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MessageCircle size={18} className="text-secondary mt-1 flex-shrink-0" />
+                <span className="text-white/60">
+                  <a href="https://wa.me/5585999066947" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">85 99906-6947</a>
+                  {" | "}
+                  <a href="https://wa.me/5585981889898" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">(85) 98188-9898</a>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail size={18} className="text-secondary mt-1 flex-shrink-0" />
+                <a href="mailto:comercial@propostes.com.br" className="text-white/60 hover:text-secondary transition-colors">
+                  comercial@propostes.com.br
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-1 flex-shrink-0" />
                 <span className="text-white/60">
-                  Av. Industrial, 1500<br />
-                  Distrito Industrial, Fortaleza/CE<br />
-                  CEP: 60000-000
+                  Loja e Fábrica - Via de Ligação I - 689<br />
+                  Distrito Industrial III, Maracanaú, CE
                 </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-secondary flex-shrink-0" />
-                <a href="tel:+558532001234" className="text-white/60 hover:text-secondary transition-colors">
-                  (85) 3200-1234
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-secondary flex-shrink-0" />
-                <a href="mailto:contato@propostes.com.br" className="text-white/60 hover:text-secondary transition-colors">
-                  contato@propostes.com.br
-                </a>
               </li>
             </ul>
           </div>
