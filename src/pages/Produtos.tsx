@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Box, Grid3X3, Zap, Minus, CircleDot } from "lucide-react";
@@ -168,6 +169,36 @@ const productCategories = [
 ];
 
 const Produtos = () => {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          const headerOffset = 80; // Altura do header fixo
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    };
+
+    // Scroll inicial quando o componente é montado
+    const timer = setTimeout(scrollToHash, 100);
+
+    // Listener para mudanças no hash
+    window.addEventListener("hashchange", scrollToHash);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
