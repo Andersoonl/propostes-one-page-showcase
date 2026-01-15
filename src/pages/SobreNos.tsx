@@ -1,34 +1,115 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Award, Factory, MapPin, Users, Target, CheckCircle2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import seloIso9001 from "@/assets/selo iso9001.png";
 import seloAbcp from "@/assets/selo abcp.jpg";
 import fabrica1 from "@/assets/institucional/Fábrica Propostes 2022 (31).jpg";
-import fabrica2 from "@/assets/institucional/Fábrica Propostes 2022 (39).jpg";
-import institucional1 from "@/assets/institucional/rgalizav- Propostes032023--127.jpg";
-import institucional2 from "@/assets/institucional/rgalizav- Propostes032023--24.jpg";
-import institucional3 from "@/assets/institucional/rgalizav- Propostes032023--51.jpg";
-import institucional4 from "@/assets/institucional/rgalizav- Propostes032023--61.jpg";
-import institucional5 from "@/assets/institucional/rgalizav- Propostes032023--93.jpg";
-import institucional6 from "@/assets/institucional/rgalizav- Propostes032023--165.jpg";
-import institucional7 from "@/assets/institucional/rgalizav- Propostes032023--304.jpg";
-import institucional8 from "@/assets/institucional/rgalizav- Propostes032023--321.jpg";
-import institucional9 from "@/assets/institucional/rgalizav- Propostes032023--333.jpg";
-import institucional10 from "@/assets/institucional/Fábrica Propostes 2022 (35).jpg";
+import fabrica2 from "@/assets/institucional/Fábrica Propostes 2022 (35).jpg";
+import fabrica3 from "@/assets/institucional/Fábrica Propostes 2022 (39).jpg";
+import img4076 from "@/assets/institucional/IMG_4076.JPG";
+import institucional1 from "@/assets/institucional/rgalizav- Propostes032023--103.jpg";
+import institucional2 from "@/assets/institucional/rgalizav- Propostes032023--105.jpg";
+import institucional3 from "@/assets/institucional/rgalizav- Propostes032023--115.jpg";
+import institucional4 from "@/assets/institucional/rgalizav- Propostes032023--123.jpg";
+import institucional5 from "@/assets/institucional/rgalizav- Propostes032023--124.jpg";
+import institucional6 from "@/assets/institucional/rgalizav- Propostes032023--127.jpg";
+import institucional7 from "@/assets/institucional/rgalizav- Propostes032023--139.jpg";
+import institucional8 from "@/assets/institucional/rgalizav- Propostes032023--147.jpg";
+import institucional9 from "@/assets/institucional/rgalizav- Propostes032023--153.jpg";
+import institucional10 from "@/assets/institucional/rgalizav- Propostes032023--155.jpg";
 import institucional11 from "@/assets/institucional/rgalizav- Propostes032023--16.jpg";
-import institucional12 from "@/assets/institucional/rgalizav- Propostes032023--103.jpg";
-import institucional13 from "@/assets/institucional/rgalizav- Propostes032023--105.jpg";
-import institucional14 from "@/assets/institucional/rgalizav- Propostes032023--123.jpg";
-import institucional15 from "@/assets/institucional/rgalizav- Propostes032023--147.jpg";
-import institucional16 from "@/assets/institucional/rgalizav- Propostes032023--149.jpg";
-import institucional17 from "@/assets/institucional/rgalizav- Propostes032023--162.jpg";
-import institucional18 from "@/assets/institucional/rgalizav- Propostes032023--190.jpg";
-import institucional19 from "@/assets/institucional/rgalizav- Propostes032023--211.jpg";
+import institucional12 from "@/assets/institucional/rgalizav- Propostes032023--162.jpg";
+import institucional13 from "@/assets/institucional/rgalizav- Propostes032023--164.jpg";
+import institucional14 from "@/assets/institucional/rgalizav- Propostes032023--171.jpg";
+import institucional15 from "@/assets/institucional/rgalizav- Propostes032023--190.jpg";
+import institucional16 from "@/assets/institucional/rgalizav- Propostes032023--193.jpg";
+import institucional17 from "@/assets/institucional/rgalizav- Propostes032023--221.jpg";
+import institucional18 from "@/assets/institucional/rgalizav- Propostes032023--229.jpg";
+import institucional19 from "@/assets/institucional/rgalizav- Propostes032023--236.jpg";
+import institucional20 from "@/assets/institucional/rgalizav- Propostes032023--237.jpg";
+import institucional21 from "@/assets/institucional/rgalizav- Propostes032023--24.jpg";
+import institucional22 from "@/assets/institucional/rgalizav- Propostes032023--240.jpg";
+import institucional23 from "@/assets/institucional/rgalizav- Propostes032023--246.jpg";
+import institucional24 from "@/assets/institucional/rgalizav- Propostes032023--249.jpg";
+import institucional25 from "@/assets/institucional/rgalizav- Propostes032023--298.jpg";
+import institucional26 from "@/assets/institucional/rgalizav- Propostes032023--304.jpg";
+import institucional27 from "@/assets/institucional/rgalizav- Propostes032023--321.jpg";
+import institucional28 from "@/assets/institucional/rgalizav- Propostes032023--333.jpg";
+import institucional29 from "@/assets/institucional/rgalizav- Propostes032023--41.jpg";
+import institucional30 from "@/assets/institucional/rgalizav- Propostes032023--51.jpg";
+import institucional31 from "@/assets/institucional/rgalizav- Propostes032023--61.jpg";
+import institucional32 from "@/assets/institucional/rgalizav- Propostes032023--62.jpg";
+import institucional33 from "@/assets/institucional/rgalizav- Propostes032023--68.jpg";
+import institucional34 from "@/assets/institucional/rgalizav- Propostes032023--77.jpg";
+import institucional35 from "@/assets/institucional/rgalizav- Propostes032023--84.jpg";
+import institucional36 from "@/assets/institucional/rgalizav- Propostes032023--87.jpg";
+import institucional37 from "@/assets/institucional/rgalizav- Propostes032023--93.jpg";
+import institucional38 from "@/assets/institucional/rgalizav-7982.jpg";
 
 const SobreNos = () => {
+  const [api, setApi] = useState<CarouselApi>();
+
+  // Array com todas as imagens para o carrossel
+  const galleryImages = [
+    fabrica1,
+    fabrica2,
+    fabrica3,
+    img4076,
+    institucional1,
+    institucional2,
+    institucional3,
+    institucional4,
+    institucional5,
+    institucional6,
+    institucional7,
+    institucional8,
+    institucional9,
+    institucional10,
+    institucional11,
+    institucional12,
+    institucional13,
+    institucional14,
+    institucional15,
+    institucional16,
+    institucional17,
+    institucional18,
+    institucional19,
+    institucional20,
+    institucional21,
+    institucional22,
+    institucional23,
+    institucional24,
+    institucional25,
+    institucional26,
+    institucional27,
+    institucional28,
+    institucional29,
+    institucional30,
+    institucional31,
+    institucional32,
+    institucional33,
+    institucional34,
+    institucional35,
+    institucional36,
+    institucional37,
+    institucional38,
+  ];
+
+  // Autoplay do carrossel - muda a cada 4 segundos
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <>
       <Helmet>
@@ -96,6 +177,45 @@ const SobreNos = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
                   Orgulhosamente, todos os artefatos de concreto fabricados pela Propostes passam por <strong className="text-foreground">rigorosos testes e ensaios de qualidade</strong>, assegurando sua segurança e credibilidade. Esse compromisso com a qualidade e a confiabilidade tornou a Propostes uma escolha preferencial para clientes em toda a região.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Galeria de Fotos - Carrossel Automático */}
+        <section className="mb-20 md:mb-32">
+          <div className="container">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center gap-3 mb-12">
+                <div className="h-1 w-16 bg-secondary"></div>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Nossa Fábrica em Imagens</h2>
+              </div>
+
+              <div className="relative px-8 md:px-0">
+                <Carousel
+                  setApi={setApi}
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    {galleryImages.map((image, index) => (
+                      <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                        <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                          <img 
+                            src={image} 
+                            alt={`Fábrica Propostes - Imagem ${index + 1}`} 
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2 md:left-4" />
+                  <CarouselNext className="right-2 md:right-4" />
+                </Carousel>
               </div>
             </div>
           </div>
@@ -229,226 +349,6 @@ const SobreNos = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Galeria Section */}
-        <section className="mb-20 md:mb-32">
-          <div className="container">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex items-center gap-3 mb-12">
-                <div className="h-1 w-16 bg-secondary"></div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Galeria de Fotos</h2>
-              </div>
-
-              <div className="relative px-8 md:px-0">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-2 md:-ml-4">
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={fabrica1} 
-                          alt="Fábrica Propostes - Instalações" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={fabrica2} 
-                          alt="Fábrica Propostes - Área de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional1} 
-                          alt="Instalações Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional2} 
-                          alt="Fábrica Propostes - Processo de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional3} 
-                          alt="Equipamentos e Maquinários Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional4} 
-                          alt="Área de Estocagem Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional5} 
-                          alt="Fábrica Propostes - Vista Geral" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional6} 
-                          alt="Produção de Artefatos de Concreto" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional7} 
-                          alt="Instalações Modernas Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional8} 
-                          alt="Fábrica Propostes - Linha de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional9} 
-                          alt="Infraestrutura Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional10} 
-                          alt="Fábrica Propostes - Instalações Industriais" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional11} 
-                          alt="Processo de Fabricação Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional12} 
-                          alt="Equipamentos de Produção Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional13} 
-                          alt="Área de Produção Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional14} 
-                          alt="Fábrica Propostes - Maquinários" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional15} 
-                          alt="Linha de Montagem Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional16} 
-                          alt="Controle de Qualidade Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional17} 
-                          alt="Estocagem de Produtos Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional18} 
-                          alt="Infraestrutura Industrial Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional19} 
-                          alt="Fábrica Propostes - Tecnologia e Inovação" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0 md:-left-12" />
-                  <CarouselNext className="right-0 md:-right-12" />
-                </Carousel>
-              </div>
-
-              <p className="text-center text-muted-foreground mt-8 text-sm">
-                Navegue pelas fotos para conhecer melhor nossas instalações e processos de produção.
-              </p>
             </div>
           </div>
         </section>

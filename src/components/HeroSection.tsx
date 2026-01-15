@@ -1,5 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/drone/Propostes Drone 05 cut.jpeg";
+import logoPropostes from "@/assets/Logo-propostes-cut.png";
 
 const HeroSection = () => {
   return (
@@ -19,20 +20,21 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container text-center px-4">
         <div className="max-w-4xl mx-auto">
-          <p 
-            className="text-secondary font-medium text-base md:text-lg mb-3 opacity-0 animate-fade-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            Propostes — Soluções em Concreto
-          </p>
-          
-          <h1 
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-5 md:mb-6 leading-tight opacity-0 animate-fade-up"
+          {/* Logo */}
+          <div 
+            className="mb-6 md:mb-8 opacity-0 animate-fade-up flex justify-center"
             style={{ animationDelay: "0s" }}
           >
-            Conheça Nossos
-            <span className="block text-secondary">Produtos</span>
-          </h1>
+            <img 
+              src={logoPropostes} 
+              alt="Propostes - Soluções em Concreto" 
+              className="w-[50vw] h-auto"
+              style={{
+                filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6))',
+                WebkitFilter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6))'
+              }}
+            />
+          </div>
           
           <p 
             className="text-base md:text-lg text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up"

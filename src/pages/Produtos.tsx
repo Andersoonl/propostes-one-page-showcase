@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Box, Grid3X3, Zap, Minus, CircleDot } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // Import product images - Família 9
 import blocoVedacao9x19x39 from "@/assets/products/bloco-vedacao-9x19x39.png";
@@ -169,13 +175,16 @@ const productCategories = [
 ];
 
 const Produtos = () => {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const [isMenuSticky, setIsMenuSticky] = useState(true);
+
   useEffect(() => {
     const scrollToHash = () => {
       const hash = window.location.hash;
       if (hash) {
         const element = document.querySelector(hash);
         if (element) {
-          const headerOffset = 80; // Altura do header fixo
+          const headerOffset = 68; // Altura do header fixo
           const elementPosition = element.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -193,9 +202,25 @@ const Produtos = () => {
     // Listener para mudanças no hash
     window.addEventListener("hashchange", scrollToHash);
 
+    // Listener para detectar quando o menu deve ficar sticky
+    const handleScroll = () => {
+      const heroSection = document.querySelector('section.bg-navy-gradient');
+      if (heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        setIsMenuSticky(heroBottom < 100);
+      } else {
+        // Se não encontrar a seção, mostra o menu sempre
+        setIsMenuSticky(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Verifica no carregamento inicial
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener("hashchange", scrollToHash);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -210,7 +235,7 @@ const Produtos = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-navy-gradient text-white">
+      <section className="pt-28 pb-16 md:pt-36 md:pb-20 bg-navy-gradient text-white">
         <div className="container">
           <Link
             to="/"
@@ -227,6 +252,44 @@ const Produtos = () => {
           </p>
         </div>
       </section>
+
+      {/* Sticky Navigation Menu */}
+      <div
+        className={`sticky top-[54px] md:top-[68px] z-40 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300`}
+      >
+        <div className="container pt-6 pb-4">
+          <nav className="overflow-x-auto">
+            <div className="flex gap-2 md:gap-3 min-w-max">
+              {productCategories.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <a
+                    key={category.id}
+                    href={`#${category.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(`#${category.id}`);
+                      if (element) {
+                        const headerOffset = 88;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border hover:border-secondary/50 hover:bg-secondary/5 transition-all duration-200 whitespace-nowrap text-sm font-medium text-foreground hover:text-secondary"
+                  >
+                    <Icon size={16} />
+                    <span>{category.title}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      </div>
 
       {/* Products Sections */}
       <main className="py-16 md:py-24">
@@ -257,7 +320,13 @@ const Produtos = () => {
                   >
                     {/* Product Image */}
                     {'image' in product && product.image ? (
-                      <div className="aspect-square bg-muted/30 flex items-center justify-center p-4">
+                      <div 
+                        className="aspect-square bg-muted/30 flex items-center justify-center p-4 cursor-pointer hover:bg-muted/50 transition-colors"
+                        onClick={() => setSelectedImage({
+                          src: product.image,
+                          alt: `${product.name} ${product.dimensions}`
+                        })}
+                      >
                         <img 
                           src={product.image} 
                           alt={`${product.name} ${product.dimensions}`}
@@ -317,6 +386,24 @@ const Produtos = () => {
       </section>
 
       <Footer />
+
+      {/* Image Zoom Modal */}
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl w-full p-0 bg-transparent border-none">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Visualização da Imagem</DialogTitle>
+          </DialogHeader>
+          {selectedImage && (
+            <div className="relative w-full h-[80vh] flex items-center justify-center bg-background rounded-lg overflow-hidden">
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
