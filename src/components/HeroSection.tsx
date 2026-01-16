@@ -10,8 +10,12 @@ const HeroSection = () => {
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="absolute inset-0 bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: '120%',
+          backgroundPosition: 'top left'
+        }}
       />
       
       {/* Overlay */}
@@ -30,8 +34,8 @@ const HeroSection = () => {
               alt="Propostes - Soluções em Concreto" 
               className="w-[50vw] h-auto"
               style={{
-                filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6))',
-                WebkitFilter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6))'
+                filter: 'drop-shadow(0 10px 25px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3))',
+                WebkitFilter: 'drop-shadow(0 10px 25px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3))'
               }}
             />
           </div>

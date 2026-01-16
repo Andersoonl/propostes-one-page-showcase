@@ -74,7 +74,7 @@ const ClientsSection = () => {
         {/* Trust Message */}
         <div className="mt-12 md:mt-16 lg:mt-20 text-center">
           <p className="text-muted-foreground text-base md:text-lg">
-            Mais de <span className="text-secondary font-bold">100+ projetos</span> realizados com sucesso em Fortaleza e região metropolitana.
+            Mais de <span className="text-secondary font-bold">1000 clientes</span> atendidos e satisfeitos com nossos <span className="text-secondary font-bold">pré-moldados de concreto</span> em todo o Ceará.
           </p>
         </div>
       </div>

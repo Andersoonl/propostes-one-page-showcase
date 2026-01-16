@@ -40,7 +40,7 @@ import meioBloco14x19x14 from "@/assets/products/Meio Bloco 14x19x14.png";
 import meioJota14 from "@/assets/products/Meio Jota 14x9-19x14.png";
 
 // Import product images - Pisos
-import pisoRetangularH4 from "@/assets/products/Piso Retangular  H4.png";
+import pisoRetangularH4 from "@/assets/products/Piso Retangular H4.png";
 import pisoRetangularH6 from "@/assets/products/Piso Retangular H6.png";
 import pisoRetangularH6Drenante from "@/assets/products/Piso Retangular H6 Drenante.png";
 import pisoRetangularH8 from "@/assets/products/Piso Retangular H8.png";
@@ -235,8 +235,65 @@ const Produtos = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-16 md:pt-36 md:pb-20 bg-navy-gradient text-white">
-        <div className="container">
+      <section 
+        className="pt-28 pb-16 md:pt-36 md:pb-20 text-white relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
+        }}
+      >
+        {/* Textura de construção */}
+        <div 
+          className="absolute inset-0 opacity-100 pointer-events-none"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 36px,
+                hsl(220 45% 24% / 0.7) 36px,
+                hsl(220 45% 24% / 0.7) 40px
+              ),
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 36px,
+                hsl(220 45% 24% / 0.7) 36px,
+                hsl(220 45% 24% / 0.7) 40px
+              ),
+              radial-gradient(circle at 20% 30%, hsl(220 40% 28% / 0.6) 0%, transparent 30%),
+              radial-gradient(circle at 80% 70%, hsl(220 45% 26% / 0.55) 0%, transparent 35%),
+              radial-gradient(circle at 50% 50%, hsl(220 50% 23% / 0.5) 0%, transparent 40%),
+              radial-gradient(circle at 10% 80%, hsl(220 40% 28% / 0.5) 0%, transparent 30%)
+            `,
+            backgroundSize: '40px 40px, 40px 40px, 120px 120px, 100px 100px, 150px 150px, 110px 110px',
+            backgroundPosition: '0 0, 0 0, 0 0, 60px 60px, 30px 30px, 20px 20px',
+            zIndex: 1
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-100 pointer-events-none"
+          style={{
+            background: `
+              repeating-linear-gradient(
+                45deg,
+                transparent 0px,
+                transparent 2px,
+                hsl(220 50% 20% / 0.4) 2px,
+                hsl(220 50% 20% / 0.4) 4px
+              ),
+              repeating-linear-gradient(
+                -45deg,
+                transparent 0px,
+                transparent 3px,
+                hsl(220 50% 22% / 0.35) 3px,
+                hsl(220 50% 22% / 0.35) 6px
+              ),
+              linear-gradient(to bottom, transparent 0%, hsl(220 55% 18% / 0.5) 100%)
+            `,
+            zIndex: 1
+          }}
+        />
+        <div className="container relative z-10">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium mb-6 transition-colors"
@@ -255,13 +312,12 @@ const Produtos = () => {
 
       {/* Sticky Navigation Menu */}
       <div
-        className={`sticky top-[54px] md:top-[68px] z-40 bg-background/95 backdrop-blur-sm border-b border-border transition-all duration-300`}
+        className={`sticky top-[54px] md:top-[68px] z-40 bg-background/80 backdrop-blur-sm border-b border-border/50 transition-all duration-300`}
       >
-        <div className="container pt-6 pb-4">
-          <nav className="overflow-x-auto">
-            <div className="flex gap-2 md:gap-3 min-w-max">
+        <div className="container py-3">
+          <nav className="overflow-x-auto scrollbar-discreet">
+            <div className="flex gap-6 md:gap-8 min-w-max">
               {productCategories.map((category) => {
-                const Icon = category.icon;
                 return (
                   <a
                     key={category.id}
@@ -279,10 +335,9 @@ const Produtos = () => {
                         });
                       }
                     }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border hover:border-secondary/50 hover:bg-secondary/5 transition-all duration-200 whitespace-nowrap text-sm font-medium text-foreground hover:text-secondary"
+                    className="relative whitespace-nowrap text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-200 px-3 py-1.5 border border-border/30 rounded-md hover:border-border/60 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary after:transition-all after:duration-200 hover:after:w-full"
                   >
-                    <Icon size={16} />
-                    <span>{category.title}</span>
+                    {category.title}
                   </a>
                 );
               })}

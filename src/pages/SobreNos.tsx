@@ -127,8 +127,65 @@ const SobreNos = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-navy-gradient text-white">
-        <div className="container">
+      <section 
+        className="pt-32 pb-16 md:pt-40 md:pb-20 text-white relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
+        }}
+      >
+        {/* Textura de construção */}
+        <div 
+          className="absolute inset-0 opacity-100 pointer-events-none"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 36px,
+                hsl(220 45% 24% / 0.7) 36px,
+                hsl(220 45% 24% / 0.7) 40px
+              ),
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 36px,
+                hsl(220 45% 24% / 0.7) 36px,
+                hsl(220 45% 24% / 0.7) 40px
+              ),
+              radial-gradient(circle at 20% 30%, hsl(220 40% 28% / 0.6) 0%, transparent 30%),
+              radial-gradient(circle at 80% 70%, hsl(220 45% 26% / 0.55) 0%, transparent 35%),
+              radial-gradient(circle at 50% 50%, hsl(220 50% 23% / 0.5) 0%, transparent 40%),
+              radial-gradient(circle at 10% 80%, hsl(220 40% 28% / 0.5) 0%, transparent 30%)
+            `,
+            backgroundSize: '40px 40px, 40px 40px, 120px 120px, 100px 100px, 150px 150px, 110px 110px',
+            backgroundPosition: '0 0, 0 0, 0 0, 60px 60px, 30px 30px, 20px 20px',
+            zIndex: 1
+          }}
+        />
+        <div 
+          className="absolute inset-0 opacity-100 pointer-events-none"
+          style={{
+            background: `
+              repeating-linear-gradient(
+                45deg,
+                transparent 0px,
+                transparent 2px,
+                hsl(220 50% 20% / 0.4) 2px,
+                hsl(220 50% 20% / 0.4) 4px
+              ),
+              repeating-linear-gradient(
+                -45deg,
+                transparent 0px,
+                transparent 3px,
+                hsl(220 50% 22% / 0.35) 3px,
+                hsl(220 50% 22% / 0.35) 6px
+              ),
+              linear-gradient(to bottom, transparent 0%, hsl(220 55% 18% / 0.5) 100%)
+            `,
+            zIndex: 1
+          }}
+        />
+        <div className="container relative z-10">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium mb-6 transition-colors"
@@ -354,8 +411,65 @@ const SobreNos = () => {
         </section>
 
         {/* Contato Section */}
-        <section className="bg-navy-gradient text-white py-16 md:py-20">
-          <div className="container">
+        <section 
+          className="text-white py-16 md:py-20 relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
+          }}
+        >
+          {/* Textura de construção */}
+          <div 
+            className="absolute inset-0 opacity-100 pointer-events-none"
+            style={{
+              backgroundImage: `
+                repeating-linear-gradient(
+                  0deg,
+                  transparent,
+                  transparent 36px,
+                  hsl(220 45% 24% / 0.7) 36px,
+                  hsl(220 45% 24% / 0.7) 40px
+                ),
+                repeating-linear-gradient(
+                  90deg,
+                  transparent,
+                  transparent 36px,
+                  hsl(220 45% 24% / 0.7) 36px,
+                  hsl(220 45% 24% / 0.7) 40px
+                ),
+                radial-gradient(circle at 20% 30%, hsl(220 40% 28% / 0.6) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, hsl(220 45% 26% / 0.55) 0%, transparent 35%),
+                radial-gradient(circle at 50% 50%, hsl(220 50% 23% / 0.5) 0%, transparent 40%),
+                radial-gradient(circle at 10% 80%, hsl(220 40% 28% / 0.5) 0%, transparent 30%)
+              `,
+              backgroundSize: '40px 40px, 40px 40px, 120px 120px, 100px 100px, 150px 150px, 110px 110px',
+              backgroundPosition: '0 0, 0 0, 0 0, 60px 60px, 30px 30px, 20px 20px',
+              zIndex: 1
+            }}
+          />
+          <div 
+            className="absolute inset-0 opacity-100 pointer-events-none"
+            style={{
+              background: `
+                repeating-linear-gradient(
+                  45deg,
+                  transparent 0px,
+                  transparent 2px,
+                  hsl(220 50% 20% / 0.4) 2px,
+                  hsl(220 50% 20% / 0.4) 4px
+                ),
+                repeating-linear-gradient(
+                  -45deg,
+                  transparent 0px,
+                  transparent 3px,
+                  hsl(220 50% 22% / 0.35) 3px,
+                  hsl(220 50% 22% / 0.35) 6px
+                ),
+                linear-gradient(to bottom, transparent 0%, hsl(220 55% 18% / 0.5) 100%)
+              `,
+              zIndex: 1
+            }}
+          />
+          <div className="container relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-1 w-16 bg-secondary"></div>
@@ -391,7 +505,7 @@ const SobreNos = () => {
                   <strong className="text-white">Telefones:</strong> (85) 3463-4578 | (85) 3463-4580
                 </p>
                 <p className="text-white/70 mb-4">
-                  <strong className="text-white">WhatsApp:</strong> 85 99906-6947 | (85) 98188-9898
+                  <strong className="text-white">WhatsApp:</strong> (85) 99906-6947 | (85) 98188-9898
                 </p>
                 <p className="text-white/70">
                   <strong className="text-white">E-mail:</strong>{" "}
