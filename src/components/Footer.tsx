@@ -12,7 +12,7 @@ const Footer = () => {
               <img 
                 src={logoPropostes} 
                 alt="Propostes" 
-                className="h-40 w-auto brightness-0 invert"
+                className="h-10 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-white/60 mb-6 max-w-md leading-relaxed">
@@ -72,6 +72,16 @@ const Footer = () => {
                   Sobre Nós
                 </a>
               </li>
+              <li>
+                <a href="#clientes" className="text-white/60 hover:text-secondary transition-colors">
+                  Clientes & Parceiros
+                </a>
+              </li>
+              <li>
+                <a href="#qualidade" className="text-white/60 hover:text-secondary transition-colors">
+                  Qualidade
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -90,7 +100,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MessageCircle size={18} className="text-secondary mt-1 flex-shrink-0" />
                 <span className="text-white/60">
-                  <a href="https://wa.me/5585999066947" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">(85) 99906-6947</a>
+                  <a href="https://wa.me/5585999066947" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">85 99906-6947</a>
                   {" | "}
                   <a href="https://wa.me/5585981889898" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">(85) 98188-9898</a>
                 </span>
@@ -103,15 +113,10 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-1 flex-shrink-0" />
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Via+de+Ligação+I+-+689+Distrito+Industrial+III,+Maracanaú,+CE" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-secondary transition-colors"
-                >
+                <span className="text-white/60">
                   Loja e Fábrica - Via de Ligação I - 689<br />
                   Distrito Industrial III, Maracanaú, CE
-                </a>
+                </span>
               </li>
             </ul>
           </div>
