@@ -97,9 +97,27 @@ const SobreNos = () => {
                   Fundada em 1992, na cidade de Fortaleza, Ceará, a <strong className="text-foreground">Propostes</strong> é uma empresa líder na área de pré-moldados para a construção civil, especializada na fabricação de uma vasta gama de produtos em concreto, incluindo Postes Circulares e Duplo T, Cruzetas, Blocos, Pisos, Manilhas, Meio Fio, entre outros artefatos.
                 </p>
 
+                {/* Foto 1 - Vista da fábrica */}
+                <div className="my-8 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={fabrica1}
+                    alt="Vista aérea da fábrica Propostes"
+                    className="w-full h-64 md:h-80 object-cover"
+                  />
+                </div>
+
                 <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
                   Iniciando sua trajetória com a produção de postes de concreto, a Propostes consolidou sua presença no mercado, fornecendo milhares de postes para diversos estados do Nordeste, incluindo Piauí, Maranhão e, claro, Ceará. Destacando-se como fornecedora estratégica da <strong className="text-foreground">Coelce por mais de uma década</strong>, contribuiu significativamente para o avanço do setor elétrico no estado do Ceará.
                 </p>
+
+                {/* Foto 2 - Área de produção */}
+                <div className="my-8 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={institucional3}
+                    alt="Área de produção e equipamentos Propostes"
+                    className="w-full h-64 md:h-80 object-cover"
+                  />
+                </div>
 
                 <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
                   Com o passar dos anos, a empresa expandiu sua linha de produtos para atender às demandas crescentes do mercado da construção civil. Investindo em tecnologia de ponta e maquinário de última geração, agora oferece uma ampla variedade de produtos, incluindo blocos e pisos de concreto. Essa expansão permitiu à Propostes atender às principais construtoras e obras em todo o Nordeste, estabelecendo-se como uma referência em qualidade e confiabilidade.
@@ -109,6 +127,15 @@ const SobreNos = () => {
                   <p className="text-muted-foreground leading-relaxed text-lg">
                     Localizada estrategicamente no <strong className="text-foreground">Distrito Industrial de Maracanaú</strong>, em uma área de aproximadamente <strong className="text-foreground">30.000m²</strong>, a Propostes possui instalações modernas e eficientes para a fabricação de seus produtos. Comprometida com a inovação e o desenvolvimento tecnológico, a empresa investe constantemente na capacitação de sua equipe, garantindo a conformidade com as normas regulatórias e a excelência em todos os seus produtos.
                   </p>
+                </div>
+
+                {/* Foto 3 - Instalações */}
+                <div className="my-8 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={fabrica2}
+                    alt="Instalações modernas da Propostes"
+                    className="w-full h-64 md:h-80 object-cover"
+                  />
                 </div>
 
                 <p className="text-muted-foreground leading-relaxed mb-6 text-lg">
