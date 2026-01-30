@@ -57,7 +57,7 @@ const SobreNos = () => {
 
       {/* Hero Section */}
       <section
-        className="pt-32 pb-16 md:pt-40 md:pb-20 text-white relative overflow-hidden"
+        className="pt-24 pb-12 sm:pt-28 sm:pb-14 md:pt-40 md:pb-20 text-white relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
         }}
@@ -73,10 +73,10 @@ const SobreNos = () => {
             <ArrowLeft size={18} />
             Voltar para Início
           </Link>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Quem Somos
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl">
             Conheça a história da Propostes, uma empresa líder em pré-moldados de concreto com mais de 30 anos de excelência.
           </p>
         </div>

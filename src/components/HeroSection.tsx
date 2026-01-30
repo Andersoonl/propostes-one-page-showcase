@@ -8,16 +8,14 @@ const HeroSection = () => {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: '120%',
-          backgroundPosition: 'top left'
-        }}
+      {/* Background Image - Otimizado para mobile e desktop */}
+      <img
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center md:object-[left_top] md:scale-110"
       />
-      
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-hero-overlay" />
 
@@ -25,18 +23,14 @@ const HeroSection = () => {
       <div className="relative z-10 container text-center px-4">
         <div className="max-w-4xl mx-auto">
           {/* Logo */}
-          <div 
+          <div
             className="mb-6 md:mb-8 opacity-0 animate-fade-up flex justify-center"
             style={{ animationDelay: "0s" }}
           >
-            <img 
-              src={logoPropostes} 
-              alt="Propostes - Soluções em Concreto" 
-              className="w-[50vw] h-auto"
-              style={{
-                filter: 'drop-shadow(0 10px 25px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3))',
-                WebkitFilter: 'drop-shadow(0 10px 25px rgba(255, 255, 255, 0.4)) drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3))'
-              }}
+            <img
+              src={logoPropostes}
+              alt="Propostes - Soluções em Concreto"
+              className="w-[70vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] max-w-md md:max-w-lg h-auto drop-shadow-[0_10px_25px_rgba(255,255,255,0.4)]"
             />
           </div>
           

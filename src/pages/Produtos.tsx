@@ -65,8 +65,8 @@ const Produtos = () => {
       <Header />
 
       {/* Hero Section */}
-      <section 
-        className="pt-28 pb-16 md:pt-36 md:pb-20 text-white relative overflow-hidden"
+      <section
+        className="pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-36 md:pb-20 text-white relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
         }}
@@ -82,10 +82,10 @@ const Produtos = () => {
             <ArrowLeft size={18} />
             Voltar para Início
           </Link>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Todos os Produtos
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl">
             Conheça nossa linha completa de produtos pré-moldados em concreto. Qualidade certificada ISO 9001.
           </p>
         </div>
@@ -95,9 +95,9 @@ const Produtos = () => {
       <div
         className={`sticky top-[54px] md:top-[68px] z-40 bg-background/80 backdrop-blur-sm border-b border-border/50 transition-all duration-300`}
       >
-        <div className="container py-3">
-          <nav className="overflow-x-auto scrollbar-discreet">
-            <div className="flex gap-6 md:gap-8 min-w-max">
+        <div className="container py-2 md:py-3">
+          <nav className="overflow-x-auto scrollbar-discreet -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="flex gap-2 sm:gap-4 md:gap-6 min-w-max">
               {productCategories.map((category) => {
                 return (
                   <a
