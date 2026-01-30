@@ -110,11 +110,11 @@ const SobreNos = () => {
                   Iniciando sua trajetória com a produção de postes de concreto, a Propostes consolidou sua presença no mercado, fornecendo milhares de postes para diversos estados do Nordeste, incluindo Piauí, Maranhão e, claro, Ceará. Destacando-se como fornecedora estratégica da <strong className="text-foreground">Coelce por mais de uma década</strong>, contribuiu significativamente para o avanço do setor elétrico no estado do Ceará.
                 </p>
 
-                {/* Foto 2 - Área de produção */}
+                {/* Foto 2 - Logística e estoque */}
                 <div className="my-8 rounded-xl overflow-hidden shadow-lg">
                   <img
-                    src={institucional3}
-                    alt="Área de produção e equipamentos Propostes"
+                    src={institucional17}
+                    alt="Caminhão Propostes carregando blocos de concreto"
                     className="w-full h-64 md:h-80 object-cover"
                   />
                 </div>
