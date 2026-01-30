@@ -4,6 +4,7 @@ import { ArrowLeft, Award, Factory, MapPin, Users, Target, CheckCircle2 } from "
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { COMPANY, CONTACT, formatPhonesInline, formatWhatsappInline } from "@/config";
 import seloIso9001 from "@/assets/selo iso9001.png";
 import seloAbcp from "@/assets/selo abcp.jpg";
 import fabrica1 from "@/assets/institucional/Fábrica Propostes 2022 (31).jpg";
@@ -23,7 +24,7 @@ import institucional12 from "@/assets/institucional/rgalizav- Propostes032023--1
 import institucional13 from "@/assets/institucional/rgalizav- Propostes032023--105.jpg";
 import institucional14 from "@/assets/institucional/rgalizav- Propostes032023--123.jpg";
 import institucional15 from "@/assets/institucional/rgalizav- Propostes032023--147.jpg";
-import institucional16 from "@/assets/institucional/rgalizav- Propostes032023--147.jpg";
+import institucional16 from "@/assets/institucional/rgalizav- Propostes032023--153.jpg";
 import institucional17 from "@/assets/institucional/rgalizav- Propostes032023--162.jpg";
 import institucional18 from "@/assets/institucional/rgalizav- Propostes032023--190.jpg";
 import institucional19 from "@/assets/institucional/rgalizav- Propostes032023--193.jpg";
@@ -37,17 +38,34 @@ const SobreNos = () => {
           name="description" 
           content="Conheça a Propostes: fundada em 1992 em Fortaleza/CE, líder em pré-moldados de concreto. Mais de 30 anos de excelência, certificação ISO 9001 e compromisso com qualidade." 
         />
-        <meta 
-          name="keywords" 
-          content="Propostes, história, sobre nós, empresa de concreto, Fortaleza, Ceará, pré-moldados, ISO 9001" 
+        <meta
+          name="keywords"
+          content="Propostes, história, sobre nós, empresa de concreto, Fortaleza, Ceará, pré-moldados, ISO 9001"
         />
+        <meta property="og:title" content="Sobre Nós - Propostes | Conheça Nossa História" />
+        <meta property="og:description" content="Fundada em 1992, líder em pré-moldados de concreto. Mais de 30 anos de excelência e certificação ISO 9001." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.propostes.com.br/sobre-nos" />
+        <meta property="og:image" content="https://www.propostes.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sobre Nós - Propostes" />
+        <meta name="twitter:description" content="Fundada em 1992, líder em pré-moldados de concreto no Ceará." />
+        <meta name="twitter:image" content="https://www.propostes.com.br/og-image.jpg" />
       </Helmet>
 
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-navy-gradient text-white">
-        <div className="container">
+      <section
+        className="pt-32 pb-16 md:pt-40 md:pb-20 text-white relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
+        }}
+      >
+        {/* Textura de construção */}
+        <div className="bg-hero-texture-grid" />
+        <div className="bg-hero-texture-diagonal" />
+        <div className="container relative z-10">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium mb-6 transition-colors"
@@ -97,6 +115,226 @@ const SobreNos = () => {
                   Orgulhosamente, todos os artefatos de concreto fabricados pela Propostes passam por <strong className="text-foreground">rigorosos testes e ensaios de qualidade</strong>, assegurando sua segurança e credibilidade. Esse compromisso com a qualidade e a confiabilidade tornou a Propostes uma escolha preferencial para clientes em toda a região.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Galeria Section */}
+        <section className="mb-20 md:mb-32">
+          <div className="container">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center gap-3 mb-12">
+                <div className="h-1 w-16 bg-secondary"></div>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Galeria de Fotos</h2>
+              </div>
+
+              <div className="relative px-8 md:px-0">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={fabrica1}
+                          alt="Fábrica Propostes - Instalações"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={fabrica2}
+                          alt="Fábrica Propostes - Área de Produção"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional1}
+                          alt="Instalações Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional2}
+                          alt="Fábrica Propostes - Processo de Produção"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional3}
+                          alt="Equipamentos e Maquinários Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional4}
+                          alt="Área de Estocagem Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional5}
+                          alt="Fábrica Propostes - Vista Geral"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional6}
+                          alt="Produção de Artefatos de Concreto"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional7}
+                          alt="Instalações Modernas Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional8}
+                          alt="Fábrica Propostes - Linha de Produção"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional9}
+                          alt="Infraestrutura Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional10}
+                          alt="Fábrica Propostes - Instalações Industriais"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional11}
+                          alt="Processo de Fabricação Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional12}
+                          alt="Equipamentos de Produção Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional13}
+                          alt="Área de Produção Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional14}
+                          alt="Fábrica Propostes - Maquinários"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional15}
+                          alt="Linha de Montagem Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional16}
+                          alt="Controle de Qualidade Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional17}
+                          alt="Estocagem de Produtos Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional18}
+                          alt="Infraestrutura Industrial Propostes"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <img
+                          src={institucional19}
+                          alt="Fábrica Propostes - Tecnologia e Inovação"
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                  </CarouselContent>
+                  <CarouselPrevious className="left-0 md:-left-12" />
+                  <CarouselNext className="right-0 md:-right-12" />
+                </Carousel>
+              </div>
+
+              <p className="text-center text-muted-foreground mt-8 text-sm">
+                Navegue pelas fotos para conhecer melhor nossas instalações e processos de produção.
+              </p>
             </div>
           </div>
         </section>
@@ -233,226 +471,6 @@ const SobreNos = () => {
           </div>
         </section>
 
-        {/* Galeria Section */}
-        <section className="mb-20 md:mb-32">
-          <div className="container">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex items-center gap-3 mb-12">
-                <div className="h-1 w-16 bg-secondary"></div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Galeria de Fotos</h2>
-              </div>
-
-              <div className="relative px-8 md:px-0">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-2 md:-ml-4">
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={fabrica1} 
-                          alt="Fábrica Propostes - Instalações" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={fabrica2} 
-                          alt="Fábrica Propostes - Área de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional1} 
-                          alt="Instalações Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional2} 
-                          alt="Fábrica Propostes - Processo de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional3} 
-                          alt="Equipamentos e Maquinários Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional4} 
-                          alt="Área de Estocagem Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional5} 
-                          alt="Fábrica Propostes - Vista Geral" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional6} 
-                          alt="Produção de Artefatos de Concreto" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional7} 
-                          alt="Instalações Modernas Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional8} 
-                          alt="Fábrica Propostes - Linha de Produção" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional9} 
-                          alt="Infraestrutura Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional10} 
-                          alt="Fábrica Propostes - Instalações Industriais" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional11} 
-                          alt="Processo de Fabricação Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional12} 
-                          alt="Equipamentos de Produção Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional13} 
-                          alt="Área de Produção Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional14} 
-                          alt="Fábrica Propostes - Maquinários" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional15} 
-                          alt="Linha de Montagem Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional16} 
-                          alt="Controle de Qualidade Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional17} 
-                          alt="Estocagem de Produtos Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional18} 
-                          alt="Infraestrutura Industrial Propostes" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                    <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <img 
-                          src={institucional19} 
-                          alt="Fábrica Propostes - Tecnologia e Inovação" 
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </CarouselItem>
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0 md:-left-12" />
-                  <CarouselNext className="right-0 md:-right-12" />
-                </Carousel>
-              </div>
-
-              <p className="text-center text-muted-foreground mt-8 text-sm">
-                Navegue pelas fotos para conhecer melhor nossas instalações e processos de produção.
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Contato Section */}
         <section className="bg-navy-gradient text-white py-16 md:py-20">
           <div className="container">
@@ -469,8 +487,8 @@ const SobreNos = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Endereço</h3>
                     <p className="text-white/70">
-                      Loja e Fábrica - Via de Ligação I - 689<br />
-                      Distrito Industrial III, Maracanaú, CE
+                      Loja e Fábrica - {CONTACT.address.street}<br />
+                      {CONTACT.address.neighborhood}, {CONTACT.address.city}, {CONTACT.address.state}
                     </p>
                   </div>
                 </div>
@@ -480,7 +498,7 @@ const SobreNos = () => {
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Área Total</h3>
                     <p className="text-white/70">
-                      Aproximadamente 30.000m² de instalações modernas e eficientes
+                      Aproximadamente {COMPANY.factoryArea} de instalações modernas e eficientes
                     </p>
                   </div>
                 </div>
@@ -488,15 +506,15 @@ const SobreNos = () => {
 
               <div className="mt-12 pt-8 border-t border-white/10">
                 <p className="text-white/70 mb-4">
-                  <strong className="text-white">Telefones:</strong> (85) 3463-4578 | (85) 3463-4580
+                  <strong className="text-white">Telefones:</strong> {formatPhonesInline()}
                 </p>
                 <p className="text-white/70 mb-4">
-                  <strong className="text-white">WhatsApp:</strong> 85 99906-6947 | (85) 98188-9898
+                  <strong className="text-white">WhatsApp:</strong> {formatWhatsappInline()}
                 </p>
                 <p className="text-white/70">
                   <strong className="text-white">E-mail:</strong>{" "}
-                  <a href="mailto:comercial@propostes.com.br" className="text-secondary hover:text-secondary/80 transition-colors">
-                    comercial@propostes.com.br
+                  <a href={CONTACT.email.href} className="text-secondary hover:text-secondary/80 transition-colors">
+                    {CONTACT.email.address}
                   </a>
                 </p>
               </div>

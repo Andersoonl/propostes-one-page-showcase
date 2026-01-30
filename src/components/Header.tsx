@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X, Instagram } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoPropostes from "@/assets/Logo-propostes-cut.png";
+import { SOCIAL } from "@/config";
 
 const navLinks = [
   { label: "Início", href: "/" },
@@ -59,12 +60,13 @@ const Header = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-2" aria-label="Navegação principal">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               onClick={() => handleNavClick(link.href)}
+              aria-current={isActiveLink(link.href) ? "page" : undefined}
               className={`relative font-medium px-4 py-2 rounded-lg transition-all duration-300 ${
                 isActiveLink(link.href)
                   ? "text-secondary bg-secondary/10 shadow-sm"
@@ -73,13 +75,13 @@ const Header = () => {
             >
               <span className="relative z-10">{link.label}</span>
               {isActiveLink(link.href) && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary rounded-full" aria-hidden="true" />
               )}
             </Link>
           ))}
           {/* Instagram Icon */}
           <a
-            href="https://www.instagram.com/propostes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            href={SOCIAL.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-2 p-2 text-muted-foreground hover:text-secondary transition-colors duration-300"
@@ -93,21 +95,28 @@ const Header = () => {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden p-2 text-foreground hover:text-secondary transition-colors"
-          aria-label="Toggle menu"
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-background border-b border-border animate-fade-in">
+        <nav
+          id="mobile-navigation"
+          className="md:hidden bg-background border-b border-border animate-fade-in"
+          aria-label="Navegação mobile"
+        >
           <div className="container py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
                 onClick={() => handleNavClick(link.href)}
+                aria-current={isActiveLink(link.href) ? "page" : undefined}
                 className={`font-medium px-4 py-2 rounded-lg transition-all duration-300 ${
                   isActiveLink(link.href)
                     ? "text-secondary bg-secondary/10"
@@ -119,7 +128,7 @@ const Header = () => {
             ))}
             {/* Instagram Icon - Mobile */}
             <a
-              href="https://www.instagram.com/propostes?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              href={SOCIAL.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 flex items-center gap-2 text-muted-foreground hover:text-secondary transition-colors duration-300"

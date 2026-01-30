@@ -1,4 +1,4 @@
-import { Award, CheckCircle2, Shield, ThumbsUp } from "lucide-react";
+import { CheckCircle2, Shield, ThumbsUp } from "lucide-react";
 import seloABCP from "@/assets/selo abcp.jpg";
 import seloISO9001 from "@/assets/selo iso9001.png";
 
@@ -43,23 +43,23 @@ const QualitySection = () => {
             </p>
 
             {/* Certifications List */}
-            <div className="space-y-4 md:space-y-5">
+            <ul className="space-y-4 md:space-y-5" aria-label="Diferenciais de qualidade">
               {certifications.map((cert, index) => (
-                <div 
-                  key={cert.title} 
+                <li
+                  key={cert.title}
                   className="flex items-start gap-3 md:gap-4 opacity-0 animate-fade-up"
                   style={{ animationDelay: `${0.1 * index}s` }}
                 >
-                  <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0" aria-hidden="true">
                     <cert.icon size={20} className="text-secondary-foreground" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-base md:text-lg mb-1">{cert.title}</h4>
-                    <p className="text-white/60 text-sm md:text-base">{cert.description}</p>
+                    <p className="text-white/70 text-sm md:text-base">{cert.description}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Right Content - Quality Seals */}
@@ -81,7 +81,7 @@ const QualitySection = () => {
                 
                 <h3 className="text-xl md:text-2xl font-bold mb-2">ISO 9001</h3>
                 <p className="text-secondary font-medium text-base mb-3">Certificado de Qualidade</p>
-                <p className="text-white/60 text-sm max-w-xs mx-auto">
+                <p className="text-white/70 text-sm max-w-xs mx-auto">
                   Sistema de Gestão da Qualidade certificado e auditado periodicamente, garantindo processos padronizados e melhoria contínua.
                 </p>
               </div>
@@ -104,7 +104,7 @@ const QualitySection = () => {
                 
                 <h3 className="text-xl md:text-2xl font-bold mb-2">Selo ABCP</h3>
                 <p className="text-secondary font-medium text-base mb-3">Certificação ABCP</p>
-                <p className="text-white/60 text-sm max-w-xs mx-auto">
+                <p className="text-white/70 text-sm max-w-xs mx-auto">
                   Certificação da Associação Brasileira de Cimento Portland, reconhecendo a qualidade e conformidade dos nossos produtos de concreto.
                 </p>
               </div>

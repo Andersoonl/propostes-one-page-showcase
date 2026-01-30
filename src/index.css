@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 @layer base {
   :root {
@@ -201,6 +201,61 @@
 
   .bg-hero-overlay {
     background: linear-gradient(to bottom, hsl(220 50% 15% / 0.5), hsl(220 55% 12% / 0.6));
+  }
+
+  /* Textura de construção para hero sections - Grid Layer */
+  .bg-hero-texture-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 36px,
+        hsl(220 45% 24% / 0.7) 36px,
+        hsl(220 45% 24% / 0.7) 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 36px,
+        hsl(220 45% 24% / 0.7) 36px,
+        hsl(220 45% 24% / 0.7) 40px
+      ),
+      radial-gradient(circle at 20% 30%, hsl(220 40% 28% / 0.6) 0%, transparent 30%),
+      radial-gradient(circle at 80% 70%, hsl(220 45% 26% / 0.55) 0%, transparent 35%),
+      radial-gradient(circle at 50% 50%, hsl(220 50% 23% / 0.5) 0%, transparent 40%),
+      radial-gradient(circle at 10% 80%, hsl(220 40% 28% / 0.5) 0%, transparent 30%);
+    background-size: 40px 40px, 40px 40px, 120px 120px, 100px 100px, 150px 150px, 110px 110px;
+    background-position: 0 0, 0 0, 0 0, 60px 60px, 30px 30px, 20px 20px;
+  }
+
+  /* Textura de construção para hero sections - Diagonal Layer */
+  .bg-hero-texture-diagonal {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 2px,
+        hsl(220 50% 20% / 0.4) 2px,
+        hsl(220 50% 20% / 0.4) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0px,
+        transparent 3px,
+        hsl(220 50% 22% / 0.35) 3px,
+        hsl(220 50% 22% / 0.35) 6px
+      ),
+      linear-gradient(to bottom, transparent 0%, hsl(220 55% 18% / 0.5) 100%);
   }
 
   /* Scrollbar discreta */
