@@ -34,6 +34,7 @@ export const CONTACT = {
     city: "Maracanaú",
     state: "CE",
     full: "Loja e Fábrica - Via de Ligação I - 689, Distrito Industrial III, Maracanaú, CE",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Via+de+Liga%C3%A7%C3%A3o+I+-+689,+Distrito+Industrial+III,+Maracana%C3%BA,+CE",
   },
 } as const;
 

@@ -18,19 +18,19 @@ const products = [
     title: "Postes",
     description: "Postes de concreto armado para iluminação pública e rural. Resistência e longa vida útil garantida.",
     Icon: Zap,
-    href: "/produtos#postes-cruzetas",
+    href: "/produtos#postes",
   },
   {
     title: "Cruzetas",
     description: "Cruzetas para redes de distribuição elétrica. Fabricadas conforme normas técnicas vigentes.",
     Icon: Plus,
-    href: "/produtos#postes-cruzetas",
+    href: "/produtos#cruzetas",
   },
   {
     title: "Manilhas",
     description: "Manilhas de concreto para drenagem e saneamento. Diversos diâmetros disponíveis.",
     Icon: CircleDot,
-    href: "/produtos#tubos-caixas",
+    href: "/produtos#manilhas",
   },
   {
     title: "Meio Fio",

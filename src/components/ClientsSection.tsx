@@ -34,19 +34,28 @@ const ClientsSection = () => {
         </div>
 
         {/* Partners Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          <div className="relative min-h-[300px] overflow-hidden rounded-xl">
+        <div
+          className="relative max-w-5xl mx-auto"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Parceiros e clientes da Propostes"
+        >
+          <div className="relative min-h-[300px] overflow-hidden rounded-xl" aria-live="polite">
             {partners.map((partner, index) => (
               <div
                 key={partner.id}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`Slide ${index + 1} de ${partners.length}`}
+                aria-hidden={index !== currentIndex}
                 className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                   index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
               >
                 <div className="w-full bg-card border border-border rounded-xl shadow-xl overflow-hidden flex items-center justify-center p-2 md:p-3">
-                  <img 
-                    src={partner.image} 
-                    alt={partner.alt} 
+                  <img
+                    src={partner.image}
+                    alt={partner.alt}
                     className="w-full h-auto object-contain"
                   />
                 </div>
@@ -55,14 +64,16 @@ const ClientsSection = () => {
           </div>
 
           {/* Indicators */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="flex justify-center gap-2 mt-6" role="tablist" aria-label="Navegação do carousel">
             {partners.map((_, index) => (
               <button
                 key={index}
+                role="tab"
                 onClick={() => setCurrentIndex(index)}
+                aria-selected={index === currentIndex}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? "w-8 bg-secondary" 
+                  index === currentIndex
+                    ? "w-8 bg-secondary"
                     : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                 }`}
                 aria-label={`Mostrar parceiros ${index + 1}`}

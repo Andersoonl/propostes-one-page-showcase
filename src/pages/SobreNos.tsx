@@ -102,7 +102,7 @@ const SobreNos = () => {
                   <img
                     src={fabrica1}
                     alt="Vista aérea da fábrica Propostes"
-                    className="w-full h-64 md:h-80 object-cover"
+                    className="w-full h-64 md:h-80 object-cover object-[center_60%]"
                   />
                 </div>
 
@@ -115,7 +115,7 @@ const SobreNos = () => {
                   <img
                     src={institucional17}
                     alt="Caminhão Propostes carregando blocos de concreto"
-                    className="w-full h-64 md:h-80 object-cover"
+                    className="w-full h-64 md:h-80 object-cover object-[center_15%]"
                   />
                 </div>
 

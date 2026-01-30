@@ -119,10 +119,15 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-secondary mt-1 flex-shrink-0" />
-                <span className="text-white/70">
+                <a
+                  href={CONTACT.address.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-secondary transition-colors"
+                >
                   Loja e Fábrica - {CONTACT.address.street}<br />
                   {CONTACT.address.neighborhood}, {CONTACT.address.city}, {CONTACT.address.state}
-                </span>
+                </a>
               </li>
             </ul>
           </div>
