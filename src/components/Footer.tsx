@@ -18,8 +18,7 @@ const Footer = () => {
             </div>
             <p className="text-white/70 mb-6 max-w-md leading-relaxed">
               {COMPANY.description}.
-              Há mais de {getYearsInBusiness()} anos oferecendo soluções para construção civil em
-              {COMPANY.location} e região.
+              Há mais de {getYearsInBusiness()} anos oferecendo soluções para construção civil em {COMPANY.location} e região.
             </p>
 
             {/* Social Links */}
