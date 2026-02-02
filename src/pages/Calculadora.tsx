@@ -13,11 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { WHATSAPP_CTA } from "@/config";
 
 // Dados dos produtos com rendimento por m²
@@ -74,15 +69,8 @@ const Calculadora = () => {
   // Calcula quantidade de peças
   const piecesNeeded = useMemo(() => {
     if (!selectedProduct || totalArea <= 0) return 0;
-    // Adiciona 10% de margem para perdas
-    const withMargin = totalArea * 1.1;
-    return Math.ceil(withMargin * selectedProduct.piecesPerSqm);
+    return Math.ceil(totalArea * selectedProduct.piecesPerSqm);
   }, [selectedProduct, totalArea]);
-
-  // Calcula área com margem
-  const areaWithMargin = useMemo(() => {
-    return totalArea * 1.1;
-  }, [totalArea]);
 
   // Produtos da categoria selecionada
   const categoryProducts = useMemo(() => {
@@ -307,26 +295,9 @@ const Calculadora = () => {
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-border/50">
-                        <span className="text-muted-foreground text-xs sm:text-sm">Área informada</span>
+                        <span className="text-muted-foreground text-xs sm:text-sm">Área</span>
                         <span className="font-medium text-foreground text-xs sm:text-sm">
                           {totalArea.toFixed(2)} m²
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center py-2 border-b border-border/50">
-                        <Tooltip>
-                          <TooltipTrigger className="text-muted-foreground flex items-center gap-1 cursor-help text-xs sm:text-sm">
-                            <span className="hidden sm:inline">Área com margem (10%)</span>
-                            <span className="sm:hidden">Com margem 10%</span>
-                            <Info size={12} className="sm:w-3.5 sm:h-3.5" />
-                          </TooltipTrigger>
-                          <TooltipContent side="top" className="max-w-[250px]">
-                            <p>
-                              10% de margem para perdas com recortes e ajustes.
-                            </p>
-                          </TooltipContent>
-                        </Tooltip>
-                        <span className="font-medium text-foreground text-xs sm:text-sm">
-                          {areaWithMargin.toFixed(2)} m²
                         </span>
                       </div>
                       <div className="flex justify-between items-center py-2">
@@ -373,9 +344,9 @@ const Calculadora = () => {
                 <Info size={16} className="sm:w-5 sm:h-5 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Sobre o cálculo</h3>
+                <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Dica</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground">
-                  Inclui 10% de margem para perdas com recortes.
+                  Considere adicionar 10% para perdas com recortes.
                 </p>
               </div>
             </div>
