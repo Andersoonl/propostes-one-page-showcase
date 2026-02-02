@@ -7,6 +7,7 @@ import { SOCIAL } from "@/config";
 const navLinks = [
   { label: "Início", href: "/" },
   { label: "Produtos", href: "/produtos" },
+  { label: "Calculadora", href: "/calculadora" },
   { label: "Sobre Nós", href: "/sobre-nos" },
 ];
 
@@ -42,9 +43,7 @@ const Header = () => {
 
   const isActiveLink = (href: string) => {
     if (href === "/") return location.pathname === "/";
-    if (href === "/produtos") return location.pathname === "/produtos";
-    if (href === "/sobre-nos") return location.pathname === "/sobre-nos";
-    return false;
+    return location.pathname === href;
   };
 
   return (

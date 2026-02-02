@@ -10,6 +10,7 @@ import { HelmetProvider } from "react-helmet-async";
 const Index = lazy(() => import("./pages/Index"));
 const Produtos = lazy(() => import("./pages/Produtos"));
 const SobreNos = lazy(() => import("./pages/SobreNos"));
+const Calculadora = lazy(() => import("./pages/Calculadora"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading fallback component
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/produtos" element={<Produtos />} />
               <Route path="/sobre-nos" element={<SobreNos />} />
+              <Route path="/calculadora" element={<Calculadora />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
