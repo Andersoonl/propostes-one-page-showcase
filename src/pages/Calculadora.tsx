@@ -45,18 +45,25 @@ const calculableProducts = {
 };
 
 const Calculadora = () => {
+  const [inputMode, setInputMode] = useState<"dimensions" | "direct">("dimensions");
   const [length, setLength] = useState<string>("");
   const [width, setWidth] = useState<string>("");
+  const [directArea, setDirectArea] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [product, setProduct] = useState<string>("");
 
-  // Calcula a área total
+  // Calcula a área total baseado no modo de entrada
   const totalArea = useMemo(() => {
+    if (inputMode === "direct") {
+      const area = parseFloat(directArea.replace(",", "."));
+      if (isNaN(area) || area <= 0) return 0;
+      return area;
+    }
     const l = parseFloat(length.replace(",", "."));
     const w = parseFloat(width.replace(",", "."));
     if (isNaN(l) || isNaN(w) || l <= 0 || w <= 0) return 0;
     return l * w;
-  }, [length, width]);
+  }, [inputMode, length, width, directArea]);
 
   // Encontra o produto selecionado
   const selectedProduct = useMemo(() => {
@@ -88,9 +95,12 @@ const Calculadora = () => {
   // Gera mensagem para WhatsApp
   const getWhatsAppMessage = () => {
     if (!selectedProduct || totalArea <= 0) return WHATSAPP_CTA.href;
+    const areaInfo = inputMode === "dimensions"
+      ? `${totalArea.toFixed(2)}m² (${length}m x ${width}m)`
+      : `${totalArea.toFixed(2)}m²`;
     const message = encodeURIComponent(
       `Olá! Gostaria de um orçamento para:\n\n` +
-      `📏 Área: ${totalArea.toFixed(2)}m² (${length}m x ${width}m)\n` +
+      `📏 Área: ${areaInfo}\n` +
       `📦 Produto: ${selectedProduct.name}\n` +
       `🔢 Quantidade estimada: ${piecesNeeded} peças\n\n` +
       `Podem me ajudar?`
@@ -155,40 +165,81 @@ const Calculadora = () => {
               <div className="bg-card border border-border rounded-xl p-4 sm:p-6">
                 <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-2">
                   <Ruler size={18} className="text-secondary sm:w-5 sm:h-5" />
-                  Dimensões da Área
+                  Área
                 </h2>
 
+                {/* Toggle Tabs */}
+                <div className="flex gap-1 p-1 bg-muted/50 rounded-lg mb-4">
+                  <button
+                    onClick={() => setInputMode("dimensions")}
+                    className={`flex-1 py-2 px-3 text-xs sm:text-sm font-medium rounded-md transition-all ${
+                      inputMode === "dimensions"
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Calcular (C x L)
+                  </button>
+                  <button
+                    onClick={() => setInputMode("direct")}
+                    className={`flex-1 py-2 px-3 text-xs sm:text-sm font-medium rounded-md transition-all ${
+                      inputMode === "direct"
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    Já sei o m²
+                  </button>
+                </div>
+
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  {inputMode === "dimensions" ? (
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                      <div>
+                        <Label htmlFor="length" className="text-xs sm:text-sm font-medium text-muted-foreground">
+                          Comprimento (m)
+                        </Label>
+                        <Input
+                          id="length"
+                          type="text"
+                          inputMode="decimal"
+                          placeholder="Ex: 10"
+                          value={length}
+                          onChange={(e) => setLength(e.target.value)}
+                          className="mt-1.5 h-12 text-base"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="width" className="text-xs sm:text-sm font-medium text-muted-foreground">
+                          Largura (m)
+                        </Label>
+                        <Input
+                          id="width"
+                          type="text"
+                          inputMode="decimal"
+                          placeholder="Ex: 5"
+                          value={width}
+                          onChange={(e) => setWidth(e.target.value)}
+                          className="mt-1.5 h-12 text-base"
+                        />
+                      </div>
+                    </div>
+                  ) : (
                     <div>
-                      <Label htmlFor="length" className="text-xs sm:text-sm font-medium text-muted-foreground">
-                        Comprimento (m)
+                      <Label htmlFor="directArea" className="text-xs sm:text-sm font-medium text-muted-foreground">
+                        Metragem total (m²)
                       </Label>
                       <Input
-                        id="length"
+                        id="directArea"
                         type="text"
                         inputMode="decimal"
-                        placeholder="Ex: 10"
-                        value={length}
-                        onChange={(e) => setLength(e.target.value)}
+                        placeholder="Ex: 50"
+                        value={directArea}
+                        onChange={(e) => setDirectArea(e.target.value)}
                         className="mt-1.5 h-12 text-base"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="width" className="text-xs sm:text-sm font-medium text-muted-foreground">
-                        Largura (m)
-                      </Label>
-                      <Input
-                        id="width"
-                        type="text"
-                        inputMode="decimal"
-                        placeholder="Ex: 5"
-                        value={width}
-                        onChange={(e) => setWidth(e.target.value)}
-                        className="mt-1.5 h-12 text-base"
-                      />
-                    </div>
-                  </div>
+                  )}
 
                   {/* Area Display */}
                   <div className="bg-muted/50 rounded-lg p-3 sm:p-4 border border-border/50">
