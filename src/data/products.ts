@@ -173,7 +173,7 @@ export const productCategories: ProductCategory[] = [
     icon: Minus,
     products: [
       { name: "Meio Fio de Concreto", dimensions: "Padrão", image: meioFio1, specs: { resistencia: "35MPa", tipo: "Padrão" }, description: "Indicado para delimitar calçadas, canteiros e bordas de pavimento, organizando o acabamento e protegendo o intertravado. Ajuda a conter o conjunto e manter alinhamento." },
-      { name: "Meio Fio de Concreto", dimensions: "Tipo 2", image: meioFio2, specs: { resistencia: "35MPa", tipo: "Alternativo" }, description: "Mesma função de contenção e delimitação, com variação de perfil para adequar ao padrão da via/projeto. Ideal para guias, sarjetas e separação de áreas." },
+      { name: "Meio Fio de Concreto", dimensions: "Vibroprensado", image: meioFio2, specs: { resistencia: "35MPa", tipo: "Vibroprensado" }, description: "Meio fio vibroprensado com mesma função de contenção e delimitação, com variação de perfil para adequar ao padrão da via/projeto. Ideal para guias, sarjetas e separação de áreas." },
     ],
   },
   {
