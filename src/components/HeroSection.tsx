@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import heroImage from "@/assets/institucional/rgalizav- Propostes032023--240.jpg";
 import logoPropostes from "@/assets/Logo-propostes-cut.png";
 
@@ -9,12 +9,14 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image - Otimizado para mobile e desktop */}
-      <img
-        src={heroImage}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center md:object-[left_top] md:scale-110"
-      />
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center md:object-[left_top] md:scale-110 blur-sm"
+        />
+      </div>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-hero-overlay" />
@@ -37,20 +39,23 @@ const HeroSection = () => {
             </div>
 
             <p
-              className="text-base md:text-lg text-navy-700 font-medium mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up"
+              className="text-lg md:text-xl text-navy-700 font-medium mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-up"
               style={{ animationDelay: "0.1s" }}
             >
-              Soluções em pré-moldados de concreto com qualidade certificada.
-              Pisos, blocos, postes e muito mais para sua obra.
+              Fábrica de pré-moldados de concreto com qualidade certificada para sua obra.
+              Pisos intertravados, blocos de concreto, postes, meio-fio, manilhas e soluções
+              para obras residenciais, comerciais e industriais.
             </p>
 
             <a
-              href="#produtos"
+              href="https://wa.me/551147190000"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-navy-700 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0 animate-fade-up"
               style={{ animationDelay: "0.2s" }}
             >
-              Veja Produtos
-              <ArrowDown size={20} />
+              Solicite seu orçamento com uma de nossas atendentes
+              <MessageCircle size={20} />
             </a>
           </div>
         </div>

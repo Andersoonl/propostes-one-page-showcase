@@ -59,20 +59,20 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Propostes | Produtos de Concreto Pré-Moldado em Fortaleza</title>
-        <meta 
-          name="description" 
-          content="Propostes: fabricante de produtos de concreto pré-moldado em Fortaleza/CE. Pisos, blocos, postes, cruzetas, manilhas e meio-fio com qualidade ISO 9001." 
+        <title>Propostes | Fábrica de Pré-Moldados de Concreto em Fortaleza</title>
+        <meta
+          name="description"
+          content="Fábrica de pré-moldados de concreto com qualidade certificada. Pisos intertravados, blocos de concreto (vedação e estrutural), postes, meio-fio e manilhas para obras residenciais, comerciais e industriais. Solicite orçamento."
         />
-        <meta 
-          name="keywords" 
-          content="concreto pré-moldado, pisos de concreto, blocos de concreto, postes de concreto, Fortaleza, Ceará, pré-moldados, construção civil" 
+        <meta
+          name="keywords"
+          content="fábrica pré-moldados, pisos intertravados, blocos de concreto, blocos vedação, blocos estrutural, postes concreto, meio-fio, manilhas, pré-moldados Fortaleza, concreto Ceará"
         />
         <meta name="author" content="Propostes" />
-        <meta property="og:title" content="Propostes | Produtos de Concreto Pré-Moldado" />
-        <meta 
-          property="og:description" 
-          content="Fabricante de produtos pré-moldados em concreto de alta qualidade em Fortaleza/CE." 
+        <meta property="og:title" content="Propostes | Fábrica de Pré-Moldados de Concreto" />
+        <meta
+          property="og:description"
+          content="Fábrica de pré-moldados com qualidade certificada: pisos intertravados, blocos, postes, meio-fio e manilhas para obras residenciais e industriais."
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="pt_BR" />
@@ -82,8 +82,8 @@ const Index = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Propostes - Produtos de Concreto Pré-Moldado" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Propostes | Produtos de Concreto Pré-Moldado" />
-        <meta name="twitter:description" content="Fabricante de produtos pré-moldados em concreto de alta qualidade em Fortaleza/CE." />
+        <meta name="twitter:title" content="Propostes | Fábrica de Pré-Moldados de Concreto" />
+        <meta name="twitter:description" content="Fábrica de pré-moldados com qualidade certificada: pisos intertravados, blocos, postes, meio-fio e manilhas para obras residenciais e industriais." />
         <meta name="twitter:image" content="https://www.propostes.com.br/og-image.jpg" />
         <link rel="canonical" href="https://www.propostes.com.br" />
         <script type="application/ld+json">

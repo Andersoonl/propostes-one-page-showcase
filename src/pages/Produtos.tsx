@@ -183,12 +183,15 @@ const Produtos = () => {
                       <p className="text-secondary font-medium text-sm mb-3">
                         {product.dimensions}
                       </p>
-                      <div className="space-y-1.5 text-sm text-muted-foreground">
+                      {'description' in product && product.description && (
+                        <p className="text-muted-foreground text-sm">
+                          {product.description}
+                        </p>
+                      )}
+                      {/* Specs ocultas visualmente, mantidas para SEO */}
+                      <div className="sr-only">
                         {Object.entries(product.specs).map(([key, value]) => (
-                          <div key={key} className="flex justify-between">
-                            <span className="capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}:</span>
-                            <span className="font-medium text-foreground">{String(value)}</span>
-                          </div>
+                          <span key={key}>{key}: {String(value)} </span>
                         ))}
                       </div>
                     </div>
