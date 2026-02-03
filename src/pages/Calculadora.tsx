@@ -162,30 +162,32 @@ const Calculadora = () => {
           <div className="grid gap-4 sm:gap-8 md:grid-cols-2">
             {/* Input Section */}
             <div className="space-y-4 sm:space-y-6">
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6">
-                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-2">
-                  <Ruler size={18} className="text-secondary sm:w-5 sm:h-5" />
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-3">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-lg flex items-center justify-center">
+                    <Ruler size={18} className="text-secondary sm:w-5 sm:h-5" />
+                  </div>
                   Área
                 </h2>
 
                 {/* Toggle Tabs */}
-                <div className="flex gap-1 p-1 bg-muted/50 rounded-lg mb-4">
+                <div className="flex gap-1.5 p-1.5 bg-muted/60 rounded-xl mb-5 border border-border/50">
                   <button
                     onClick={() => setInputMode("dimensions")}
-                    className={`flex-1 py-2 px-3 text-xs sm:text-sm font-medium rounded-md transition-all ${
+                    className={`flex-1 py-2.5 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 ${
                       inputMode === "dimensions"
-                        ? "bg-background text-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "bg-white text-foreground shadow-md border border-border/50"
+                        : "text-muted-foreground hover:text-foreground hover:bg-white/50"
                     }`}
                   >
                     Calcular (C x L)
                   </button>
                   <button
                     onClick={() => setInputMode("direct")}
-                    className={`flex-1 py-2 px-3 text-xs sm:text-sm font-medium rounded-md transition-all ${
+                    className={`flex-1 py-2.5 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-200 ${
                       inputMode === "direct"
-                        ? "bg-background text-foreground shadow-sm"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "bg-white text-foreground shadow-md border border-border/50"
+                        : "text-muted-foreground hover:text-foreground hover:bg-white/50"
                     }`}
                   >
                     Já sei o m²
@@ -242,19 +244,27 @@ const Calculadora = () => {
                   )}
 
                   {/* Area Display */}
-                  <div className="bg-muted/50 rounded-lg p-3 sm:p-4 border border-border/50">
-                    <div className="text-xs sm:text-sm text-muted-foreground mb-1">Área total</div>
-                    <div className="text-2xl sm:text-3xl font-bold text-foreground">
-                      {totalArea > 0 ? `${totalArea.toFixed(2)} m²` : "— m²"}
+                  <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-xl p-4 sm:p-5 border border-secondary/20 shadow-sm">
+                    <div className="text-xs sm:text-sm text-muted-foreground mb-1 font-medium">Área total</div>
+                    <div className="text-3xl sm:text-4xl font-bold text-foreground">
+                      {totalArea > 0 ? (
+                        <>
+                          {totalArea.toFixed(2)} <span className="text-secondary">m²</span>
+                        </>
+                      ) : (
+                        <span className="text-muted-foreground/50">— m²</span>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Product Selection */}
-              <div className="bg-card border border-border rounded-xl p-4 sm:p-6">
-                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-2">
-                  <Box size={18} className="text-secondary sm:w-5 sm:h-5" />
+              <div className="bg-card border border-border rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-3">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-secondary/20 to-secondary/5 rounded-lg flex items-center justify-center">
+                    <Box size={18} className="text-secondary sm:w-5 sm:h-5" />
+                  </div>
                   Selecione o Produto
                 </h2>
 
@@ -300,14 +310,18 @@ const Calculadora = () => {
                   </div>
 
                   {selectedProduct && (
-                    <div className="text-xs sm:text-sm text-muted-foreground bg-muted/30 rounded-lg p-3 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                      <Info size={14} className="flex-shrink-0 hidden sm:block" />
-                      <span className="leading-relaxed">
-                        <span className="font-medium">{selectedProduct.dimensions}</span>
-                        <span className="mx-2 hidden sm:inline">|</span>
-                        <br className="sm:hidden" />
-                        <span>{selectedProduct.piecesPerSqm} peças/m²</span>
-                      </span>
+                    <div className="bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-xl p-4 border border-secondary/20 shadow-sm">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Info size={14} className="text-secondary flex-shrink-0" />
+                        <span className="text-xs font-semibold text-secondary uppercase tracking-wide">Produto selecionado</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                        <span className="text-sm font-bold text-foreground">{selectedProduct.dimensions}</span>
+                        <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-secondary/50" />
+                        <span className="text-sm text-muted-foreground">
+                          <span className="font-semibold text-secondary">{selectedProduct.piecesPerSqm}</span> peças por m²
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -316,23 +330,25 @@ const Calculadora = () => {
 
             {/* Results Section */}
             <div className="space-y-4 sm:space-y-6">
-              <div className="bg-card border-2 border-secondary/30 rounded-xl p-4 sm:p-6 md:sticky md:top-24">
-                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-2">
-                  <Calculator size={18} className="text-secondary sm:w-5 sm:h-5" />
+              <div className="bg-gradient-to-br from-card to-secondary/5 border-2 border-secondary/40 rounded-xl p-4 sm:p-6 md:sticky md:top-24 shadow-xl">
+                <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-3">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-secondary to-secondary/70 rounded-lg flex items-center justify-center shadow-md">
+                    <Calculator size={18} className="text-secondary-foreground sm:w-5 sm:h-5" />
+                  </div>
                   Resultado
                 </h2>
 
                 {totalArea > 0 && selectedProduct ? (
                   <div className="space-y-4 sm:space-y-6">
                     {/* Main Result */}
-                    <div className="bg-secondary/10 rounded-xl p-4 sm:p-6 text-center">
-                      <div className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">
+                    <div className="bg-gradient-to-br from-secondary/20 via-secondary/10 to-primary/5 rounded-xl p-5 sm:p-8 text-center border border-secondary/30 shadow-inner">
+                      <div className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wide font-medium">
                         Quantidade necessária
                       </div>
-                      <div className="text-4xl sm:text-5xl font-bold text-secondary mb-1 sm:mb-2">
+                      <div className="text-5xl sm:text-6xl font-bold text-secondary mb-2 sm:mb-3 drop-shadow-sm">
                         {piecesNeeded.toLocaleString("pt-BR")}
                       </div>
-                      <div className="text-base sm:text-lg text-foreground font-medium">
+                      <div className="text-lg sm:text-xl text-foreground font-semibold">
                         peças
                       </div>
                     </div>
@@ -375,12 +391,15 @@ const Calculadora = () => {
                     </p>
                   </div>
                 ) : (
-                  <div className="text-center py-8 sm:py-12">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                      <Calculator size={24} className="sm:w-8 sm:h-8 text-muted-foreground/50" />
+                  <div className="text-center py-10 sm:py-14">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-muted to-muted/50 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-5 shadow-inner">
+                      <Calculator size={28} className="sm:w-10 sm:h-10 text-muted-foreground/40" />
                     </div>
-                    <p className="text-muted-foreground text-sm sm:text-base px-4">
-                      Preencha os campos acima para calcular.
+                    <p className="text-muted-foreground text-sm sm:text-base px-4 font-medium">
+                      Preencha os campos ao lado para calcular
+                    </p>
+                    <p className="text-muted-foreground/60 text-xs sm:text-sm mt-2">
+                      Informe a área e selecione o produto
                     </p>
                   </div>
                 )}
@@ -389,37 +408,37 @@ const Calculadora = () => {
           </div>
 
           {/* Info Cards */}
-          <div className="mt-8 sm:mt-12 grid gap-3 sm:gap-6 md:grid-cols-3">
-            <div className="bg-muted/50 rounded-xl p-4 sm:p-6 border border-border/50 flex sm:block items-start gap-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/10 rounded-lg flex items-center justify-center sm:mb-4 flex-shrink-0">
-                <Info size={16} className="sm:w-5 sm:h-5 text-secondary" />
+          <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 md:grid-cols-3">
+            <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
+                <Info size={18} className="sm:w-6 sm:h-6 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Dica</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  Considere adicionar 10% para perdas com recortes.
+                <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Dica importante</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Considere adicionar <span className="font-semibold text-secondary">10%</span> para perdas com recortes.
                 </p>
               </div>
             </div>
-            <div className="bg-muted/50 rounded-xl p-4 sm:p-6 border border-border/50 flex sm:block items-start gap-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/10 rounded-lg flex items-center justify-center sm:mb-4 flex-shrink-0">
-                <Ruler size={16} className="sm:w-5 sm:h-5 text-secondary" />
+            <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
+                <Ruler size={18} className="sm:w-6 sm:h-6 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Medição correta</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  Divida áreas irregulares em retângulos e some.
+                <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Medição correta</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Divida áreas irregulares em retângulos e some os resultados.
                 </p>
               </div>
             </div>
-            <div className="bg-muted/50 rounded-xl p-4 sm:p-6 border border-border/50 flex sm:block items-start gap-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/10 rounded-lg flex items-center justify-center sm:mb-4 flex-shrink-0">
-                <MessageCircle size={16} className="sm:w-5 sm:h-5 text-secondary" />
+            <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
+                <MessageCircle size={18} className="sm:w-6 sm:h-6 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Dúvidas?</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  Fale conosco pelo WhatsApp para orçamento.
+                <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Dúvidas?</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Fale conosco pelo <span className="font-semibold text-secondary">WhatsApp</span> para orçamento personalizado.
                 </p>
               </div>
             </div>
