@@ -79,22 +79,36 @@ const Calculadora = () => {
     return Math.ceil(totalArea * selectedProduct.piecesPerSqm);
   }, [selectedProduct, totalArea]);
 
-  // Calcula quantidade de pallets
-  const palletsNeeded = useMemo(() => {
+  // Calcula quantidade de pallets (decimal) e quanto falta para completar
+  const palletInfo = useMemo(() => {
     if (!selectedProduct || totalArea <= 0) return null;
 
     // Para pisos: calcula baseado em m² por pallet
     if (category === "pisos") {
       const product = selectedProduct as typeof selectedProduct & { sqmPerPallet?: number };
       if (!product.sqmPerPallet) return null;
-      return Math.ceil(totalArea / product.sqmPerPallet);
+      const exactPallets = totalArea / product.sqmPerPallet;
+      const wholePallets = Math.ceil(exactPallets);
+      const sqmToComplete = (wholePallets * product.sqmPerPallet) - totalArea;
+      return {
+        exact: exactPallets,
+        sqmToComplete: sqmToComplete > 0.01 ? sqmToComplete : 0, // evita valores muito pequenos por arredondamento
+      };
     }
 
     // Para blocos: calcula baseado em peças por pallet
     if (category === "blocos") {
       const product = selectedProduct as typeof selectedProduct & { piecesPerPallet?: number };
       if (!product.piecesPerPallet) return null;
-      return Math.ceil(piecesNeeded / product.piecesPerPallet);
+      const exactPallets = piecesNeeded / product.piecesPerPallet;
+      const wholePallets = Math.ceil(exactPallets);
+      const piecesToComplete = (wholePallets * product.piecesPerPallet) - piecesNeeded;
+      // Converte peças faltantes para m²
+      const sqmToComplete = piecesToComplete / selectedProduct.piecesPerSqm;
+      return {
+        exact: exactPallets,
+        sqmToComplete: sqmToComplete > 0.01 ? sqmToComplete : 0,
+      };
     }
 
     return null;
@@ -119,15 +133,15 @@ const Calculadora = () => {
     const areaInfo = inputMode === "dimensions"
       ? `${totalArea.toFixed(2)}m² (${length}m x ${width}m)`
       : `${totalArea.toFixed(2)}m²`;
-    const palletInfo = palletsNeeded !== null
-      ? `\n📦 Pallets estimados: ${palletsNeeded} ${palletsNeeded === 1 ? "pallet" : "pallets"}`
+    const palletText = palletInfo !== null
+      ? `\n📦 Pallets estimados: ${palletInfo.exact.toFixed(2)}`
       : "";
     const message = encodeURIComponent(
       `Olá! Gostaria de um orçamento para:\n\n` +
       `📏 Área: ${areaInfo}\n` +
       `📦 Produto: ${selectedProduct.name}\n` +
       `🔢 Quantidade estimada: ${piecesNeeded} peças` +
-      palletInfo +
+      palletText +
       `\n\nPodem me ajudar?`
     );
     return `${WHATSAPP_CTA.href}?text=${message}`;
@@ -398,12 +412,19 @@ const Calculadora = () => {
                           {selectedProduct.piecesPerSqm} peças/m²
                         </span>
                       </div>
-                      {palletsNeeded !== null && (
-                        <div className="flex justify-between items-center py-2 bg-gradient-to-r from-secondary/10 to-transparent -mx-2 px-2 rounded-lg">
-                          <span className="text-muted-foreground text-xs sm:text-sm">Pallets</span>
-                          <span className="font-bold text-secondary text-xs sm:text-sm">
-                            {palletsNeeded} {palletsNeeded === 1 ? "pallet" : "pallets"}
-                          </span>
+                      {palletInfo !== null && (
+                        <div className="py-2 bg-gradient-to-r from-secondary/10 to-transparent -mx-2 px-2 rounded-lg">
+                          <div className="flex justify-between items-center">
+                            <span className="text-muted-foreground text-xs sm:text-sm">Pallets</span>
+                            <span className="font-bold text-secondary text-xs sm:text-sm">
+                              {palletInfo.exact.toFixed(2)} pallets
+                            </span>
+                          </div>
+                          {palletInfo.sqmToComplete > 0 && (
+                            <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 text-right">
+                              Faltam <span className="font-semibold text-secondary">{palletInfo.sqmToComplete.toFixed(2)} m²</span> para completar {Math.ceil(palletInfo.exact)} pallets
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
