@@ -40,7 +40,7 @@ const ClientsSection = () => {
           aria-roledescription="carousel"
           aria-label="Parceiros e clientes da Propostes"
         >
-          <div className="relative min-h-[300px] overflow-hidden rounded-xl" aria-live="polite">
+          <div className="relative overflow-hidden rounded-xl" aria-live="polite">
             {partners.map((partner, index) => (
               <div
                 key={partner.id}
@@ -48,8 +48,8 @@ const ClientsSection = () => {
                 aria-roledescription="slide"
                 aria-label={`Slide ${index + 1} de ${partners.length}`}
                 aria-hidden={index !== currentIndex}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+                className={`transition-opacity duration-700 ease-in-out ${
+                  index === currentIndex ? "opacity-100" : "opacity-0 absolute inset-0"
                 }`}
               >
                 <div className="w-full bg-card border border-border rounded-xl shadow-xl overflow-hidden flex items-center justify-center p-2 md:p-3">
