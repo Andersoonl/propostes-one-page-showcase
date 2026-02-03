@@ -417,12 +417,12 @@ const Calculadora = () => {
                           <div className="flex justify-between items-center">
                             <span className="text-muted-foreground text-xs sm:text-sm">Pallets</span>
                             <span className="font-bold text-secondary text-xs sm:text-sm">
-                              {palletInfo.exact.toFixed(2)} pallets
+                              {palletInfo.exact.toFixed(2)} {palletInfo.exact <= 1 ? "pallet" : "pallets"}
                             </span>
                           </div>
                           {palletInfo.sqmToComplete > 0 && (
                             <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 text-right">
-                              Faltam <span className="font-semibold text-secondary">{palletInfo.sqmToComplete.toFixed(2)} m²</span> para completar {Math.ceil(palletInfo.exact)} pallets
+                              Faltam <span className="font-semibold text-secondary">{palletInfo.sqmToComplete.toFixed(2)} m²</span> para completar {Math.ceil(palletInfo.exact)} {Math.ceil(palletInfo.exact) === 1 ? "pallet" : "pallets"}
                             </div>
                           )}
                         </div>
