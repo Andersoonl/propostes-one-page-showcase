@@ -21,25 +21,25 @@ const calculableProducts = {
     title: "Pisos Intertravados",
     icon: Grid3X3,
     products: [
-      { id: "retangular-h4", name: "Piso Retangular H4", piecesPerSqm: 50, dimensions: "10x20x4cm" },
-      { id: "retangular-h6", name: "Piso Retangular H6", piecesPerSqm: 50, dimensions: "10x20x6cm" },
-      { id: "retangular-h8", name: "Piso Retangular H8", piecesPerSqm: 50, dimensions: "10x20x8cm" },
-      { id: "unistein-h6", name: "Piso Unistein H6", piecesPerSqm: 40, dimensions: "11,5x22,5x6cm" },
-      { id: "unistein-h8", name: "Piso Unistein H8", piecesPerSqm: 40, dimensions: "11,5x22,5x8cm" },
-      { id: "unistein-h10", name: "Piso Unistein H10", piecesPerSqm: 40, dimensions: "11,5x22,5x10cm" },
-      { id: "cityplac", name: "Piso Cityplac", piecesPerSqm: 4, dimensions: "50x50x5cm" },
-      { id: "pisograma", name: "Pisograma H8", piecesPerSqm: 13, dimensions: "60x40x8cm" },
+      { id: "retangular-h4", name: "Piso Retangular H4", piecesPerSqm: 50, dimensions: "10x20x4cm", sqmPerPallet: 20 },
+      { id: "retangular-h6", name: "Piso Retangular H6", piecesPerSqm: 50, dimensions: "10x20x6cm", sqmPerPallet: 14 },
+      { id: "retangular-h8", name: "Piso Retangular H8", piecesPerSqm: 50, dimensions: "10x20x8cm", sqmPerPallet: 12 },
+      { id: "unistein-h6", name: "Piso Unistein H6", piecesPerSqm: 40, dimensions: "11,5x22,5x6cm", sqmPerPallet: 13.5 },
+      { id: "unistein-h8", name: "Piso Unistein H8", piecesPerSqm: 40, dimensions: "11,5x22,5x8cm", sqmPerPallet: 11.25 },
+      { id: "unistein-h10", name: "Piso Unistein H10", piecesPerSqm: 40, dimensions: "11,5x22,5x10cm", sqmPerPallet: 9 },
+      { id: "cityplac", name: "Piso Cityplac", piecesPerSqm: 4, dimensions: "50x50x5cm", sqmPerPallet: 13 },
+      { id: "pisograma", name: "Pisograma H8", piecesPerSqm: 13, dimensions: "60x40x8cm", sqmPerPallet: 11.54 },
     ],
   },
   blocos: {
     title: "Blocos de Concreto",
     icon: Box,
     products: [
-      { id: "bloco-9", name: "Bloco 9x19x39", piecesPerSqm: 12.5, dimensions: "9x19x39cm" },
-      { id: "bloco-14", name: "Bloco 14x19x39", piecesPerSqm: 12.5, dimensions: "14x19x39cm" },
-      { id: "bloco-19", name: "Bloco 19x19x39", piecesPerSqm: 12.5, dimensions: "19x19x39cm" },
-      { id: "bloco-14-29", name: "Bloco 14x19x29", piecesPerSqm: 16.5, dimensions: "14x19x29cm" },
-      { id: "bloco-14-44", name: "Bloco 14x19x44", piecesPerSqm: 11, dimensions: "14x19x44cm" },
+      { id: "bloco-9", name: "Bloco 9x19x39", piecesPerSqm: 12.5, dimensions: "9x19x39cm", piecesPerPallet: 192 },
+      { id: "bloco-14", name: "Bloco 14x19x39", piecesPerSqm: 12.5, dimensions: "14x19x39cm", piecesPerPallet: 144 },
+      { id: "bloco-19", name: "Bloco 19x19x39", piecesPerSqm: 12.5, dimensions: "19x19x39cm", piecesPerPallet: 90 },
+      { id: "bloco-14-29", name: "Bloco 14x19x29", piecesPerSqm: 16.5, dimensions: "14x19x29cm", piecesPerPallet: 168 },
+      { id: "bloco-14-44", name: "Bloco 14x19x44", piecesPerSqm: 11, dimensions: "14x19x44cm", piecesPerPallet: 108 },
     ],
   },
 };
@@ -79,6 +79,27 @@ const Calculadora = () => {
     return Math.ceil(totalArea * selectedProduct.piecesPerSqm);
   }, [selectedProduct, totalArea]);
 
+  // Calcula quantidade de pallets
+  const palletsNeeded = useMemo(() => {
+    if (!selectedProduct || totalArea <= 0) return null;
+
+    // Para pisos: calcula baseado em m² por pallet
+    if (category === "pisos") {
+      const product = selectedProduct as typeof selectedProduct & { sqmPerPallet?: number };
+      if (!product.sqmPerPallet) return null;
+      return Math.ceil(totalArea / product.sqmPerPallet);
+    }
+
+    // Para blocos: calcula baseado em peças por pallet
+    if (category === "blocos") {
+      const product = selectedProduct as typeof selectedProduct & { piecesPerPallet?: number };
+      if (!product.piecesPerPallet) return null;
+      return Math.ceil(piecesNeeded / product.piecesPerPallet);
+    }
+
+    return null;
+  }, [selectedProduct, totalArea, category, piecesNeeded]);
+
   // Produtos da categoria selecionada
   const categoryProducts = useMemo(() => {
     if (!category) return [];
@@ -98,12 +119,16 @@ const Calculadora = () => {
     const areaInfo = inputMode === "dimensions"
       ? `${totalArea.toFixed(2)}m² (${length}m x ${width}m)`
       : `${totalArea.toFixed(2)}m²`;
+    const palletInfo = palletsNeeded !== null
+      ? `\n📦 Pallets estimados: ${palletsNeeded} ${palletsNeeded === 1 ? "pallet" : "pallets"}`
+      : "";
     const message = encodeURIComponent(
       `Olá! Gostaria de um orçamento para:\n\n` +
       `📏 Área: ${areaInfo}\n` +
       `📦 Produto: ${selectedProduct.name}\n` +
-      `🔢 Quantidade estimada: ${piecesNeeded} peças\n\n` +
-      `Podem me ajudar?`
+      `🔢 Quantidade estimada: ${piecesNeeded} peças` +
+      palletInfo +
+      `\n\nPodem me ajudar?`
     );
     return `${WHATSAPP_CTA.href}?text=${message}`;
   };
@@ -246,10 +271,10 @@ const Calculadora = () => {
                   {/* Area Display */}
                   <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-xl p-4 sm:p-5 border border-secondary/20 shadow-sm">
                     <div className="text-xs sm:text-sm text-muted-foreground mb-1 font-medium">Área total</div>
-                    <div className="text-3xl sm:text-4xl font-bold text-foreground">
+                    <div className="text-3xl sm:text-4xl font-bold text-primary">
                       {totalArea > 0 ? (
                         <>
-                          {totalArea.toFixed(2)} <span className="text-secondary">m²</span>
+                          {totalArea.toFixed(2)} <span className="text-primary">m²</span>
                         </>
                       ) : (
                         <span className="text-muted-foreground/50">— m²</span>
@@ -319,7 +344,7 @@ const Calculadora = () => {
                         <span className="text-sm font-bold text-foreground">{selectedProduct.dimensions}</span>
                         <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-secondary/50" />
                         <span className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-secondary">{selectedProduct.piecesPerSqm}</span> peças por m²
+                          <span className="font-semibold text-primary">{selectedProduct.piecesPerSqm}</span> peças por m²
                         </span>
                       </div>
                     </div>
@@ -345,7 +370,7 @@ const Calculadora = () => {
                       <div className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3 uppercase tracking-wide font-medium">
                         Quantidade necessária
                       </div>
-                      <div className="text-5xl sm:text-6xl font-bold text-secondary mb-2 sm:mb-3 drop-shadow-sm">
+                      <div className="text-5xl sm:text-6xl font-bold text-primary mb-2 sm:mb-3 drop-shadow-sm">
                         {piecesNeeded.toLocaleString("pt-BR")}
                       </div>
                       <div className="text-lg sm:text-xl text-foreground font-semibold">
@@ -367,12 +392,20 @@ const Calculadora = () => {
                           {totalArea.toFixed(2)} m²
                         </span>
                       </div>
-                      <div className="flex justify-between items-center py-2">
+                      <div className="flex justify-between items-center py-2 border-b border-border/50">
                         <span className="text-muted-foreground text-xs sm:text-sm">Rendimento</span>
                         <span className="font-medium text-foreground text-xs sm:text-sm">
                           {selectedProduct.piecesPerSqm} peças/m²
                         </span>
                       </div>
+                      {palletsNeeded !== null && (
+                        <div className="flex justify-between items-center py-2 bg-gradient-to-r from-secondary/10 to-transparent -mx-2 px-2 rounded-lg">
+                          <span className="text-muted-foreground text-xs sm:text-sm">Pallets</span>
+                          <span className="font-bold text-secondary text-xs sm:text-sm">
+                            {palletsNeeded} {palletsNeeded === 1 ? "pallet" : "pallets"}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     {/* CTA */}
