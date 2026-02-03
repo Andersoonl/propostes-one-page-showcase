@@ -93,7 +93,7 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-foreground hover:text-secondary transition-colors"
+          className="md:hidden min-w-11 min-h-11 flex items-center justify-center text-foreground hover:text-secondary active:text-secondary/80 transition-colors"
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
@@ -116,7 +116,7 @@ const Header = () => {
                 to={link.href}
                 onClick={() => handleNavClick(link.href)}
                 aria-current={isActiveLink(link.href) ? "page" : undefined}
-                className={`font-medium px-4 py-2 rounded-lg transition-all duration-300 ${
+                className={`font-medium px-4 py-3 rounded-lg transition-all duration-300 active:bg-secondary/20 ${
                   isActiveLink(link.href)
                     ? "text-secondary bg-secondary/10"
                     : "text-muted-foreground hover:text-secondary hover:bg-secondary/5"
@@ -130,7 +130,7 @@ const Header = () => {
               href={SOCIAL.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 flex items-center gap-2 text-muted-foreground hover:text-secondary transition-colors duration-300"
+              className="px-4 py-3 flex items-center gap-2 text-muted-foreground hover:text-secondary active:text-secondary/80 transition-colors duration-300"
               aria-label="Instagram"
               onClick={() => setIsMenuOpen(false)}
             >

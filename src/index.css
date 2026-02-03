@@ -280,4 +280,34 @@
   .scrollbar-discreet::-webkit-scrollbar-thumb:hover {
     background-color: hsl(220 20% 70% / 0.5);
   }
+
+  /* Touch-friendly tap highlight */
+  .touch-highlight {
+    -webkit-tap-highlight-color: hsl(174 50% 50% / 0.2);
+  }
+
+  /* Safe area padding for devices with notch */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Touch states for interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices and use active instead */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Better touch feedback */
+  .touch-feedback:active {
+    opacity: 0.8;
+  }
 }

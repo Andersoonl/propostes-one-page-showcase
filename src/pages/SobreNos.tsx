@@ -1,10 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Award, Factory, MapPin, Users, Target, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Factory, Users, Target, CheckCircle2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { COMPANY, CONTACT, formatPhonesInline, formatWhatsappInline } from "@/config";
 import seloIso9001 from "@/assets/selo iso9001.png";
 import seloAbcp from "@/assets/selo abcp.jpg";
 import fabrica1 from "@/assets/institucional/Fábrica Propostes 2022 (31).jpg";
@@ -103,6 +102,7 @@ const SobreNos = () => {
                     src={fabrica1}
                     alt="Vista aérea da fábrica Propostes"
                     className="w-full h-64 md:h-80 object-cover object-[center_60%]"
+                    loading="lazy"
                   />
                 </div>
 
@@ -116,6 +116,7 @@ const SobreNos = () => {
                     src={institucional17}
                     alt="Caminhão Propostes carregando blocos de concreto"
                     className="w-full h-64 md:h-80 object-cover object-[center_15%]"
+                    loading="lazy"
                   />
                 </div>
 
@@ -135,6 +136,7 @@ const SobreNos = () => {
                     src={fabrica2}
                     alt="Instalações modernas da Propostes"
                     className="w-full h-64 md:h-80 object-cover"
+                    loading="lazy"
                   />
                 </div>
 
@@ -170,6 +172,7 @@ const SobreNos = () => {
                           src={fabrica1}
                           alt="Fábrica Propostes - Instalações"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -179,6 +182,7 @@ const SobreNos = () => {
                           src={fabrica2}
                           alt="Fábrica Propostes - Área de Produção"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -188,6 +192,7 @@ const SobreNos = () => {
                           src={institucional1}
                           alt="Instalações Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -197,6 +202,7 @@ const SobreNos = () => {
                           src={institucional2}
                           alt="Fábrica Propostes - Processo de Produção"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -206,6 +212,7 @@ const SobreNos = () => {
                           src={institucional3}
                           alt="Equipamentos e Maquinários Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -215,6 +222,7 @@ const SobreNos = () => {
                           src={institucional4}
                           alt="Área de Estocagem Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -224,6 +232,7 @@ const SobreNos = () => {
                           src={institucional5}
                           alt="Fábrica Propostes - Vista Geral"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -233,6 +242,7 @@ const SobreNos = () => {
                           src={institucional6}
                           alt="Produção de Artefatos de Concreto"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -242,6 +252,7 @@ const SobreNos = () => {
                           src={institucional7}
                           alt="Instalações Modernas Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -251,6 +262,7 @@ const SobreNos = () => {
                           src={institucional8}
                           alt="Fábrica Propostes - Linha de Produção"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -260,6 +272,7 @@ const SobreNos = () => {
                           src={institucional9}
                           alt="Infraestrutura Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -269,6 +282,7 @@ const SobreNos = () => {
                           src={institucional10}
                           alt="Fábrica Propostes - Instalações Industriais"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -278,6 +292,7 @@ const SobreNos = () => {
                           src={institucional11}
                           alt="Processo de Fabricação Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -287,6 +302,7 @@ const SobreNos = () => {
                           src={institucional12}
                           alt="Equipamentos de Produção Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -296,6 +312,7 @@ const SobreNos = () => {
                           src={institucional13}
                           alt="Área de Produção Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -305,6 +322,7 @@ const SobreNos = () => {
                           src={institucional14}
                           alt="Fábrica Propostes - Maquinários"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -314,6 +332,7 @@ const SobreNos = () => {
                           src={institucional15}
                           alt="Linha de Montagem Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -323,6 +342,7 @@ const SobreNos = () => {
                           src={institucional16}
                           alt="Controle de Qualidade Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -332,6 +352,7 @@ const SobreNos = () => {
                           src={institucional17}
                           alt="Estocagem de Produtos Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -341,6 +362,7 @@ const SobreNos = () => {
                           src={institucional18}
                           alt="Infraestrutura Industrial Propostes"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -350,6 +372,7 @@ const SobreNos = () => {
                           src={institucional19}
                           alt="Fábrica Propostes - Tecnologia e Inovação"
                           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
                         />
                       </div>
                     </CarouselItem>
@@ -383,10 +406,11 @@ const SobreNos = () => {
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="bg-background p-8 rounded-lg shadow-sm border border-border text-center">
                 <div className="mb-6 flex justify-center">
-                  <img 
-                    src={seloIso9001} 
-                    alt="Certificação ISO 9001" 
+                  <img
+                    src={seloIso9001}
+                    alt="Certificação ISO 9001"
                     className="max-w-[200px] h-auto"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">Certificação ISO 9001</h3>
@@ -397,10 +421,11 @@ const SobreNos = () => {
 
               <div className="bg-background p-8 rounded-lg shadow-sm border border-border text-center">
                 <div className="mb-6 flex justify-center">
-                  <img 
-                    src={seloAbcp} 
-                    alt="Selo ABCP" 
+                  <img
+                    src={seloAbcp}
+                    alt="Selo ABCP"
                     className="max-w-[200px] h-auto rounded"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">Selo ABCP</h3>
@@ -475,7 +500,7 @@ const SobreNos = () => {
         </section>
 
         {/* Fundador Section */}
-        <section className="mb-20 md:mb-32 bg-primary/5 py-16 md:py-20">
+        <section className="bg-primary/5 py-16 md:py-20">
           <div className="container">
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center gap-3 mb-8">
@@ -498,56 +523,6 @@ const SobreNos = () => {
           </div>
         </section>
 
-        {/* Contato Section */}
-        <section className="bg-navy-gradient text-white py-16 md:py-20">
-          <div className="container">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-1 w-16 bg-secondary"></div>
-                <h2 className="text-3xl md:text-4xl font-bold">Contatos e Localização</h2>
-                <div className="h-1 w-16 bg-secondary"></div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8 mt-12 text-left">
-                <div className="flex items-start gap-4">
-                  <MapPin className="text-secondary mt-1 flex-shrink-0" size={24} />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Endereço</h3>
-                    <p className="text-white/70">
-                      Loja e Fábrica - {CONTACT.address.street}<br />
-                      {CONTACT.address.neighborhood}, {CONTACT.address.city}, {CONTACT.address.state}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Award className="text-secondary mt-1 flex-shrink-0" size={24} />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Área Total</h3>
-                    <p className="text-white/70">
-                      Aproximadamente {COMPANY.factoryArea} de instalações modernas e eficientes
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-12 pt-8 border-t border-white/10">
-                <p className="text-white/70 mb-4">
-                  <strong className="text-white">Telefones:</strong> {formatPhonesInline()}
-                </p>
-                <p className="text-white/70 mb-4">
-                  <strong className="text-white">WhatsApp:</strong> {formatWhatsappInline()}
-                </p>
-                <p className="text-white/70">
-                  <strong className="text-white">E-mail:</strong>{" "}
-                  <a href={CONTACT.email.href} className="text-secondary hover:text-secondary/80 transition-colors">
-                    {CONTACT.email.address}
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

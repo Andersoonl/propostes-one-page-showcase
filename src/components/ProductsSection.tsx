@@ -1,42 +1,55 @@
 import { Grid3X3, Box, Zap, Plus, CircleDot, Minus } from "lucide-react";
 import ProductCard from "./ProductCard";
 
+import pisosImg from "@/assets/cards/pisos.jpg";
+import blocosImg from "@/assets/cards/blocos.jpg";
+import postesImg from "@/assets/cards/postes.jpg";
+import cruzetasImg from "@/assets/cards/cruzetas.jpg";
+import manilhasImg from "@/assets/cards/manilhas.jpg";
+import meioFioImg from "@/assets/cards/meio-fio.jpg";
+
 const products = [
   {
     title: "Pisos",
     description: "Pisos pré-moldados resistentes para áreas externas e internas. Alta durabilidade e acabamento de qualidade.",
     Icon: Grid3X3,
     href: "/produtos#pisos-intertravados",
+    image: pisosImg,
   },
   {
     title: "Blocos",
     description: "Blocos estruturais e de vedação com precisão dimensional. Ideais para construções rápidas e econômicas.",
     Icon: Box,
     href: "/produtos#blocos-9",
+    image: blocosImg,
   },
   {
     title: "Postes",
     description: "Postes de concreto armado para iluminação pública e rural. Resistência e longa vida útil garantida.",
     Icon: Zap,
     href: "/produtos#postes",
+    image: postesImg,
   },
   {
     title: "Cruzetas",
     description: "Cruzetas para redes de distribuição elétrica. Fabricadas conforme normas técnicas vigentes.",
     Icon: Plus,
     href: "/produtos#cruzetas",
+    image: cruzetasImg,
   },
   {
     title: "Manilhas",
     description: "Manilhas de concreto para drenagem e saneamento. Diversos diâmetros disponíveis.",
     Icon: CircleDot,
     href: "/produtos#manilhas",
+    image: manilhasImg,
   },
   {
     title: "Meio Fio",
     description: "Meio-fios pré-moldados para urbanização. Acabamento perfeito e instalação facilitada.",
     Icon: Minus,
     href: "/produtos#meio-fio",
+    image: meioFioImg,
   },
 ];
 
@@ -64,11 +77,14 @@ const ProductsSection = () => {
               className="opacity-0 animate-fade-up"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <ProductCard 
+              <ProductCard
                 title={product.title}
                 description={product.description}
                 Icon={product.Icon}
                 href={product.href}
+                backgroundImage={product.image}
+                backgroundPosition={product.backgroundPosition}
+                backgroundSize={product.backgroundSize}
               />
             </div>
           ))}

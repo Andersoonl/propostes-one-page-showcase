@@ -21,7 +21,7 @@ export const CONTACT = {
     { number: "(85) 3463-4580", href: "tel:+558534634580" },
   ],
   whatsapp: [
-    { number: "85 99906-6947", href: "https://wa.me/5585999066947" },
+    { number: "(85) 99906-6947", href: "https://wa.me/5585999066947" },
     { number: "(85) 98188-9898", href: "https://wa.me/5585981889898" },
   ],
   email: {

@@ -57,6 +57,7 @@ const ClientsSection = () => {
                     src={partner.image}
                     alt={partner.alt}
                     className="w-full h-auto object-contain"
+                    loading="lazy"
                   />
                 </div>
               </div>
