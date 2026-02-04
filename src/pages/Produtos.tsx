@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Box } from "lucide-react";
+import { Box } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import {
   Dialog,
   DialogContent,
@@ -64,32 +64,12 @@ const Produtos = () => {
 
       <Header />
 
-      {/* Hero Section */}
-      <section
-        className="pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-36 md:pb-20 text-white relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, hsl(220 50% 32%) 0%, hsl(220 55% 22%) 100%)',
-        }}
-      >
-        {/* Textura de construção */}
-        <div className="bg-hero-texture-grid" />
-        <div className="bg-hero-texture-diagonal" />
-        <div className="container relative z-10">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 font-medium mb-6 transition-colors"
-          >
-            <ArrowLeft size={18} />
-            Voltar para Início
-          </Link>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Todos os Produtos
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl">
-            Conheça nossa linha completa de produtos pré-moldados em concreto. Qualidade certificada ISO 9001.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Todos os Produtos"
+        description="Conheça nossa linha completa de produtos pré-moldados em concreto. Qualidade certificada ISO 9001 e Selo ABCP."
+        icon={Box}
+        backLink={{ to: "/", label: "Voltar para Início" }}
+      />
 
       {/* Sticky Navigation Menu */}
       <div
