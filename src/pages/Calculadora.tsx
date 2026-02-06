@@ -23,12 +23,12 @@ const calculableProducts = {
     icon: Grid3X3,
     products: [
       { id: "retangular-h4", name: "Piso Retangular H4", piecesPerSqm: 50, dimensions: "10x20x4cm", sqmPerPallet: 20 },
-      { id: "retangular-h6", name: "Piso Retangular H6", piecesPerSqm: 50, dimensions: "10x20x6cm", sqmPerPallet: 14 },
-      { id: "retangular-h8", name: "Piso Retangular H8", piecesPerSqm: 50, dimensions: "10x20x8cm", sqmPerPallet: 12 },
-      { id: "unistein-h6", name: "Piso Unistein H6", piecesPerSqm: 40, dimensions: "11,5x22,5x6cm", sqmPerPallet: 13.5 },
-      { id: "unistein-h8", name: "Piso Unistein H8", piecesPerSqm: 40, dimensions: "11,5x22,5x8cm", sqmPerPallet: 11.25 },
+      { id: "retangular-h6", name: "Piso Retangular H6", piecesPerSqm: 50, dimensions: "10x20x6cm", sqmPerPallet: 14, hasDrenante: true },
+      { id: "retangular-h8", name: "Piso Retangular H8", piecesPerSqm: 50, dimensions: "10x20x8cm", sqmPerPallet: 12, hasDrenante: true },
+      { id: "unistein-h6", name: "Piso Unistein H6", piecesPerSqm: 40, dimensions: "11,5x22,5x6cm", sqmPerPallet: 13.5, hasDrenante: true },
+      { id: "unistein-h8", name: "Piso Unistein H8", piecesPerSqm: 40, dimensions: "11,5x22,5x8cm", sqmPerPallet: 11.25, hasDrenante: true },
       { id: "unistein-h10", name: "Piso Unistein H10", piecesPerSqm: 40, dimensions: "11,5x22,5x10cm", sqmPerPallet: 9 },
-      { id: "cityplac", name: "Piso Cityplac", piecesPerSqm: 4, dimensions: "50x50x5cm", sqmPerPallet: 13 },
+      { id: "cityplac", name: "Piso Cityplac", piecesPerSqm: 4, dimensions: "50x50x5cm", sqmPerPallet: 13, hasDrenante: true },
       { id: "pisograma", name: "Pisograma H8", piecesPerSqm: 13, dimensions: "60x40x8cm", sqmPerPallet: 11.54 },
     ],
   },
@@ -55,6 +55,7 @@ const Calculadora = () => {
   const [directPieces, setDirectPieces] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [product, setProduct] = useState<string>("");
+  const [isDrenante, setIsDrenante] = useState<boolean>(false);
 
   // Pre-select product from URL params (e.g. ?produto=pisos:retangular-h4)
   useEffect(() => {
@@ -70,6 +71,10 @@ const Calculadora = () => {
           setInputUnit("pieces");
         }
       }
+    }
+    const drenanteParam = searchParams.get("drenante");
+    if (drenanteParam === "1") {
+      setIsDrenante(true);
     }
   }, [searchParams]);
 
@@ -131,9 +136,11 @@ const Calculadora = () => {
       const exactPallets = effectiveArea / product.sqmPerPallet;
       const wholePallets = Math.ceil(exactPallets);
       const sqmToComplete = (wholePallets * product.sqmPerPallet) - effectiveArea;
+      const piecesToComplete = Math.ceil(sqmToComplete * selectedProduct.piecesPerSqm);
       return {
         exact: exactPallets,
-        sqmToComplete: sqmToComplete > 0.01 ? sqmToComplete : 0, // evita valores muito pequenos por arredondamento
+        sqmToComplete: sqmToComplete > 0.01 ? sqmToComplete : 0,
+        piecesToComplete: sqmToComplete > 0.01 ? piecesToComplete : 0,
       };
     }
 
@@ -149,6 +156,7 @@ const Calculadora = () => {
       return {
         exact: exactPallets,
         sqmToComplete: sqmToComplete > 0.01 ? sqmToComplete : 0,
+        piecesToComplete: sqmToComplete > 0.01 ? piecesToComplete : 0,
       };
     }
 
@@ -166,6 +174,7 @@ const Calculadora = () => {
   const handleCategoryChange = (value: string) => {
     setCategory(value);
     setProduct("");
+    setIsDrenante(false);
     // Define a unidade de entrada padrão baseada na categoria
     if (value === "pisos") {
       setInputUnit("sqm");
@@ -174,9 +183,32 @@ const Calculadora = () => {
     }
   };
 
+  // Reset drenante quando produto muda
+  const handleProductChange = (value: string) => {
+    setProduct(value);
+    setIsDrenante(false);
+  };
+
+  // Acrescenta a metragem/peças para completar o próximo pallet
+  const handleCompletePallet = () => {
+    if (!palletInfo || palletInfo.sqmToComplete <= 0 || !selectedProduct) return;
+
+    if (inputUnit === "sqm") {
+      const newArea = effectiveArea + palletInfo.sqmToComplete;
+      setInputMode("direct");
+      setDirectArea(newArea.toFixed(2));
+    } else {
+      const newPieces = piecesNeeded + palletInfo.piecesToComplete;
+      setDirectPieces(Math.ceil(newPieces).toString());
+    }
+  };
+
   // Gera mensagem para WhatsApp
   const getWhatsAppMessage = () => {
     if (!selectedProduct || effectiveArea <= 0) return WHATSAPP_CTA.href;
+    const productName = isDrenante && 'hasDrenante' in selectedProduct && selectedProduct.hasDrenante
+      ? `${selectedProduct.name} Drenante`
+      : selectedProduct.name;
     const areaInfo = inputUnit === "pieces"
       ? `${effectiveArea.toFixed(2)}m² (calculado a partir de ${piecesNeeded} peças)`
       : inputMode === "dimensions"
@@ -188,7 +220,7 @@ const Calculadora = () => {
     const message = encodeURIComponent(
       `Olá! Gostaria de um orçamento para:\n\n` +
       `📏 Área: ${areaInfo}\n` +
-      `📦 Produto: ${selectedProduct.name}\n` +
+      `📦 Produto: ${productName}\n` +
       `🔢 Quantidade estimada: ${piecesNeeded} peças` +
       palletText +
       `\n\nPodem me ajudar?`
@@ -259,7 +291,7 @@ const Calculadora = () => {
                     </Label>
                     <Select
                       value={product}
-                      onValueChange={setProduct}
+                      onValueChange={handleProductChange}
                       disabled={!category}
                     >
                       <SelectTrigger className="mt-1.5 h-12 text-base">
@@ -275,6 +307,20 @@ const Calculadora = () => {
                     </Select>
                   </div>
 
+                  {selectedProduct && 'hasDrenante' in selectedProduct && selectedProduct.hasDrenante && (
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={isDrenante}
+                        onChange={(e) => setIsDrenante(e.target.checked)}
+                        className="w-5 h-5 rounded border-2 border-secondary/40 text-secondary focus:ring-secondary/30 accent-secondary cursor-pointer"
+                      />
+                      <span className="text-sm font-medium text-foreground group-hover:text-secondary transition-colors">
+                        Versão Drenante (permeável)
+                      </span>
+                    </label>
+                  )}
+
                   {selectedProduct && (
                     <div className="bg-gradient-to-r from-secondary/10 to-secondary/5 rounded-xl p-4 border border-secondary/20 shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
@@ -282,10 +328,14 @@ const Calculadora = () => {
                         <span className="text-xs font-semibold text-secondary uppercase tracking-wide">Produto selecionado</span>
                       </div>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                        <span className="text-sm font-bold text-foreground">{selectedProduct.dimensions}</span>
+                        <span className="text-sm font-bold text-foreground">
+                          {isDrenante && 'hasDrenante' in selectedProduct && selectedProduct.hasDrenante
+                            ? `${selectedProduct.name} Drenante`
+                            : selectedProduct.name}
+                        </span>
                         <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-secondary/50" />
                         <span className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-primary">{selectedProduct.piecesPerSqm}</span> peças por m²
+                          {selectedProduct.dimensions} · <span className="font-semibold text-primary">{selectedProduct.piecesPerSqm}</span> peças por m²
                         </span>
                       </div>
                     </div>
@@ -497,7 +547,9 @@ const Calculadora = () => {
                       <div className="flex justify-between items-center py-2 border-b border-border/50 gap-2">
                         <span className="text-muted-foreground text-xs sm:text-sm">Produto</span>
                         <span className="font-medium text-foreground text-right text-xs sm:text-sm">
-                          {selectedProduct.name}
+                          {isDrenante && 'hasDrenante' in selectedProduct && selectedProduct.hasDrenante
+                            ? `${selectedProduct.name} Drenante`
+                            : selectedProduct.name}
                         </span>
                       </div>
                       {inputUnit === "sqm" ? (
@@ -522,19 +574,27 @@ const Calculadora = () => {
                         </span>
                       </div>
                       {palletInfo !== null && (
-                        <div className="py-2 bg-gradient-to-r from-secondary/10 to-transparent -mx-2 px-2 rounded-lg">
-                          <div className="flex justify-between items-center">
+                        <>
+                          <div className="flex justify-between items-center py-2 border-b border-border/50">
                             <span className="text-muted-foreground text-xs sm:text-sm">Pallets</span>
                             <span className="font-bold text-secondary text-xs sm:text-sm">
                               {palletInfo.exact.toFixed(2)} {palletInfo.exact <= 1 ? "pallet" : "pallets"}
                             </span>
                           </div>
                           {palletInfo.sqmToComplete > 0 && (
-                            <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 text-right">
-                              Faltam <span className="font-semibold text-secondary">{palletInfo.sqmToComplete.toFixed(2)} m²</span> para completar {Math.ceil(palletInfo.exact)} {Math.ceil(palletInfo.exact) === 1 ? "pallet" : "pallets"}
-                            </div>
+                            <button
+                              onClick={handleCompletePallet}
+                              className="w-full mt-1 py-2.5 px-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 hover:border-amber-300 rounded-lg transition-all duration-200 cursor-pointer group/pallet flex items-center justify-between gap-2"
+                            >
+                              <span className="text-xs sm:text-sm text-amber-700">
+                                Faltam <span className="font-semibold text-amber-900">{palletInfo.sqmToComplete.toFixed(2)} m²</span> para {Math.ceil(palletInfo.exact)} {Math.ceil(palletInfo.exact) === 1 ? "pallet" : "pallets"}
+                              </span>
+                              <span className="text-xs sm:text-sm font-semibold text-amber-600 group-hover/pallet:text-amber-800 whitespace-nowrap">
+                                + Completar
+                              </span>
+                            </button>
                           )}
-                        </div>
+                        </>
                       )}
                     </div>
 

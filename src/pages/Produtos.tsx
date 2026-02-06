@@ -171,7 +171,7 @@ const Produtos = () => {
                       )}
                       {product.calculatorRef && (
                         <Link
-                          to={`/calculadora?produto=${product.calculatorRef}`}
+                          to={`/calculadora?produto=${product.calculatorRef}${product.isDrenante ? '&drenante=1' : ''}`}
                           className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-turquoise-dark transition-colors duration-200"
                         >
                           <Calculator size={14} />

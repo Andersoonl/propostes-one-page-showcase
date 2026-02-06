@@ -75,6 +75,8 @@ export interface Product {
   description?: string;
   /** Reference to calculator product in format "category:productId" */
   calculatorRef?: string;
+  /** Whether this is a drenante (permeable) variant */
+  isDrenante?: boolean;
 }
 
 export interface ProductCategory {
@@ -161,11 +163,11 @@ export const productCategories: ProductCategory[] = [
     description: "Pisos pré-moldados permeáveis para pavimentação drenante de calçadas, estacionamentos e áreas externas.",
     icon: Grid3X3,
     products: [
-      { name: "Piso Retangular Drenante", dimensions: "H6", image: pisoRetangularH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" }, description: "Indicado para calçadas e áreas leves que precisam favorecer infiltração e reduzir lâmina d'água. Ajuda no controle de escoamento superficial e poças." },
-      { name: "Piso Retangular Drenante", dimensions: "H8", image: pisoRetangularH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" }, description: "Para estacionamentos e áreas com tráfego moderado onde a drenagem é requisito importante. Combina resistência com melhor gestão de água pluvial." },
-      { name: "Piso Citypalc Drenante", dimensions: "Padrão", image: pisoCitypalcDrenante, specs: { resistencia: "35MPa", tipo: "Drenante" }, description: "Une estética e permeabilidade para áreas urbanas, calçadas e praças com exigência de drenagem. Facilita manutenção e melhora conforto em dias de chuva." },
-      { name: "Piso Unistein Drenante", dimensions: "H6", image: pisoUnisteinH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" }, description: "Boa opção para áreas com manobras e necessidade de travamento superior, mantendo capacidade drenante. Indicado para condomínios e áreas comerciais." },
-      { name: "Piso Unistein Drenante", dimensions: "H8", image: pisoUnisteinH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" }, description: "Indicado para estacionamentos e acessos com maior solicitação, com foco em intertravamento e drenagem. Solução eficiente para reduzir escorrimento em áreas pavimentadas." },
+      { name: "Piso Retangular Drenante", dimensions: "H6", image: pisoRetangularH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" }, description: "Indicado para calçadas e áreas leves que precisam favorecer infiltração e reduzir lâmina d'água. Ajuda no controle de escoamento superficial e poças.", calculatorRef: "pisos:retangular-h6", isDrenante: true },
+      { name: "Piso Retangular Drenante", dimensions: "H8", image: pisoRetangularH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" }, description: "Para estacionamentos e áreas com tráfego moderado onde a drenagem é requisito importante. Combina resistência com melhor gestão de água pluvial.", calculatorRef: "pisos:retangular-h8", isDrenante: true },
+      { name: "Piso Citypalc Drenante", dimensions: "Padrão", image: pisoCitypalcDrenante, specs: { resistencia: "35MPa", tipo: "Drenante" }, description: "Une estética e permeabilidade para áreas urbanas, calçadas e praças com exigência de drenagem. Facilita manutenção e melhora conforto em dias de chuva.", calculatorRef: "pisos:cityplac", isDrenante: true },
+      { name: "Piso Unistein Drenante", dimensions: "H6", image: pisoUnisteinH6Drenante, specs: { resistencia: "35MPa", altura: "6cm", tipo: "Drenante" }, description: "Boa opção para áreas com manobras e necessidade de travamento superior, mantendo capacidade drenante. Indicado para condomínios e áreas comerciais.", calculatorRef: "pisos:unistein-h6", isDrenante: true },
+      { name: "Piso Unistein Drenante", dimensions: "H8", image: pisoUnisteinH8Drenante, specs: { resistencia: "35MPa", altura: "8cm", tipo: "Drenante" }, description: "Indicado para estacionamentos e acessos com maior solicitação, com foco em intertravamento e drenagem. Solução eficiente para reduzir escorrimento em áreas pavimentadas.", calculatorRef: "pisos:unistein-h8", isDrenante: true },
     ],
   },
   {
