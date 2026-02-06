@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Calculator, Ruler, Box, Grid3X3, Info, MessageCircle } from "lucide-react";
 import Header from "@/components/Header";
@@ -45,6 +46,7 @@ const calculableProducts = {
 };
 
 const Calculadora = () => {
+  const [searchParams] = useSearchParams();
   const [inputMode, setInputMode] = useState<"dimensions" | "direct">("dimensions");
   const [inputUnit, setInputUnit] = useState<"sqm" | "pieces">("sqm");
   const [length, setLength] = useState<string>("");
@@ -53,6 +55,23 @@ const Calculadora = () => {
   const [directPieces, setDirectPieces] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [product, setProduct] = useState<string>("");
+
+  // Pre-select product from URL params (e.g. ?produto=pisos:retangular-h4)
+  useEffect(() => {
+    const produtoParam = searchParams.get("produto");
+    if (produtoParam) {
+      const [cat, prodId] = produtoParam.split(":");
+      if (cat && prodId && cat in calculableProducts) {
+        setCategory(cat);
+        setProduct(prodId);
+        if (cat === "pisos") {
+          setInputUnit("sqm");
+        } else if (cat === "blocos") {
+          setInputUnit("pieces");
+        }
+      }
+    }
+  }, [searchParams]);
 
   // Calcula a quantidade de peças digitada diretamente
   const inputPieces = useMemo(() => {

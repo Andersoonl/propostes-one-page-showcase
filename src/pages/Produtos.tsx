@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Box } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Box, Calculator } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
@@ -167,6 +168,15 @@ const Produtos = () => {
                         <p className="text-muted-foreground text-sm">
                           {product.description}
                         </p>
+                      )}
+                      {product.calculatorRef && (
+                        <Link
+                          to={`/calculadora?produto=${product.calculatorRef}`}
+                          className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-turquoise-dark transition-colors duration-200"
+                        >
+                          <Calculator size={14} />
+                          Calcular quantidade
+                        </Link>
                       )}
                       {/* Specs ocultas visualmente, mantidas para SEO */}
                       <div className="sr-only">
