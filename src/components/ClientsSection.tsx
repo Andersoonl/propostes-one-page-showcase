@@ -19,15 +19,15 @@ const ClientsSection = () => {
   }, []);
 
   return (
-    <section id="clientes" className="py-16 md:py-24 lg:py-28 bg-background">
+    <section id="clientes" className="py-12 md:py-24 lg:py-28 bg-background">
       <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 lg:mb-20">
+        <div className="text-center mb-8 md:mb-16 lg:mb-20">
           <p className="text-secondary font-medium mb-2 md:mb-3 text-sm md:text-base">Parcerias de Sucesso</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-5">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-5">
             Clientes & Parceiros
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Empresas que confiam na qualidade dos produtos Propostes 
             para suas construções e projetos.
           </p>
@@ -84,8 +84,8 @@ const ClientsSection = () => {
         </div>
 
         {/* Trust Message */}
-        <div className="mt-12 md:mt-16 lg:mt-20 text-center">
-          <p className="text-muted-foreground text-base md:text-lg">
+        <div className="mt-8 md:mt-16 lg:mt-20 text-center">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
             Mais de <span className="text-secondary font-bold">1000 clientes</span> atendidos e satisfeitos com nossos <span className="text-secondary font-bold">pré-moldados de concreto</span> em todo o Ceará.
           </p>
         </div>

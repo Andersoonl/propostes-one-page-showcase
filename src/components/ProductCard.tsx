@@ -15,7 +15,7 @@ const ProductCard = ({ title, description, Icon, href, backgroundImage, backgrou
   return (
     <Link
       to={href}
-      className="group relative bg-card border border-border rounded-xl p-6 md:p-8 hover:border-secondary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 active:scale-[0.98] block overflow-hidden min-h-[240px] md:min-h-[320px] font-sans"
+      className="group relative bg-card border border-border rounded-xl p-4 sm:p-6 md:p-8 hover:border-secondary/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 active:scale-[0.98] block overflow-hidden min-h-[180px] sm:min-h-[240px] md:min-h-[320px] font-sans"
     >
       {/* Background Image */}
       {backgroundImage && (
@@ -36,19 +36,19 @@ const ProductCard = ({ title, description, Icon, href, backgroundImage, backgrou
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-end">
         {/* Icon Container */}
-        <div className="relative w-12 h-12 md:w-14 md:h-14 mb-4">
-          <div className="absolute inset-0 bg-secondary/20 backdrop-blur-sm rounded-xl group-hover:bg-secondary group-hover:scale-110 transition-all duration-300" />
+        <div className="relative w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 mb-2 sm:mb-4">
+          <div className="absolute inset-0 bg-secondary/20 backdrop-blur-sm rounded-lg sm:rounded-xl group-hover:bg-secondary group-hover:scale-110 transition-all duration-300" />
           <div className="absolute inset-0 flex items-center justify-center">
             <Icon
-              size={24}
-              className="text-secondary group-hover:text-secondary-foreground transition-all duration-300 relative z-10"
+              size={18}
+              className="sm:w-6 sm:h-6 text-secondary group-hover:text-secondary-foreground transition-all duration-300 relative z-10"
             />
           </div>
         </div>
 
         {/* Title */}
         <h3
-          className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors duration-300 leading-tight"
+          className="text-base sm:text-xl md:text-2xl font-bold text-white mb-1.5 sm:mb-3 group-hover:text-secondary transition-colors duration-300 leading-tight"
           style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
         >
           {title}
@@ -56,7 +56,7 @@ const ProductCard = ({ title, description, Icon, href, backgroundImage, backgrou
 
         {/* Description */}
         <p
-          className="text-white/90 mb-5 text-sm md:text-base leading-relaxed line-clamp-2 group-hover:text-white transition-colors duration-300"
+          className="text-white/90 mb-3 sm:mb-5 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-2 group-hover:text-white transition-colors duration-300"
           style={{ textShadow: '0 1px 3px rgba(0,0,0,0.4)' }}
         >
           {description}
@@ -64,7 +64,7 @@ const ProductCard = ({ title, description, Icon, href, backgroundImage, backgrou
 
         {/* CTA */}
         <div
-          className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all duration-300 text-sm md:text-base"
+          className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all duration-300 text-xs sm:text-sm md:text-base"
           style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}
         >
           <span className="relative">

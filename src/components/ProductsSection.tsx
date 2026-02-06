@@ -55,22 +55,22 @@ const products = [
 
 const ProductsSection = () => {
   return (
-    <section id="produtos" className="py-16 md:py-24 lg:py-28 bg-muted">
+    <section id="produtos" className="py-12 md:py-24 lg:py-28 bg-muted">
       <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16 lg:mb-20">
+        <div className="text-center mb-8 md:mb-16 lg:mb-20">
           <p className="text-secondary font-medium mb-2 md:mb-3 text-sm md:text-base">Nosso Catálogo</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-5">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-5">
             Produtos de Qualidade
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            Oferecemos uma linha completa de produtos pré-moldados em concreto 
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            Oferecemos uma linha completa de produtos pré-moldados em concreto
             para atender às necessidades da sua obra.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6 lg:gap-8">
           {products.map((product, index) => (
             <div
               key={product.title}
