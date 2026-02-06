@@ -634,23 +634,23 @@ const Calculadora = () => {
           <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 md:grid-cols-3">
             <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
+                <Box size={18} className="sm:w-6 sm:h-6 text-secondary" />
+              </div>
+              <div>
+                <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Pallets Completos</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Selecione valores <span className="font-semibold text-secondary">inteiros</span> ao solicitar orçamento.
+                </p>
+              </div>
+            </div>
+            <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
                 <Info size={18} className="sm:w-6 sm:h-6 text-secondary" />
               </div>
               <div>
                 <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Dica importante</h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   Considere adicionar <span className="font-semibold text-secondary">10%</span> para perdas com recortes.
-                </p>
-              </div>
-            </div>
-            <div className="group bg-gradient-to-br from-card to-primary/5 rounded-xl p-5 sm:p-6 border border-border shadow-md hover:shadow-lg hover:border-secondary/30 transition-all duration-300 flex sm:block items-start gap-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary/20 to-secondary/5 group-hover:from-secondary/30 group-hover:to-secondary/10 rounded-xl flex items-center justify-center sm:mb-4 flex-shrink-0 transition-all duration-300">
-                <Ruler size={18} className="sm:w-6 sm:h-6 text-secondary" />
-              </div>
-              <div>
-                <h3 className="font-bold text-foreground mb-1.5 sm:mb-2 text-sm sm:text-base">Medição correta</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Divida áreas irregulares em retângulos e some os resultados.
                 </p>
               </div>
             </div>

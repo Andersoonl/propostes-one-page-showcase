@@ -20,6 +20,47 @@ const PageHeader = ({ title, description, icon: Icon, backLink }: PageHeaderProp
       <div className="bg-hero-texture-grid opacity-40" />
       <div className="bg-hero-texture-diagonal opacity-40" />
 
+      {/* Elementos decorativos geométricos - apenas desktop */}
+      <div className="absolute inset-0 z-[2] pointer-events-none hidden lg:block">
+        {/* Bloco de concreto */}
+        <div
+          className="absolute w-20 h-14 rounded-sm border border-white/10 bg-white/[0.04] animate-float motion-reduce:animate-none"
+          style={{ top: "15%", right: "8%" }}
+        />
+        {/* Paver quadrado */}
+        <div
+          className="absolute w-10 h-10 rounded-sm border border-turquoise/15 bg-turquoise/[0.06] animate-float motion-reduce:animate-none"
+          style={{ top: "45%", right: "15%", animationDuration: "6s", animationDelay: "1s" }}
+        />
+        {/* Viga/verga */}
+        <div
+          className="absolute w-28 h-3 rounded-sm bg-turquoise/[0.08] animate-float-slow motion-reduce:animate-none"
+          style={{ top: "25%", right: "3%", animationDelay: "2s" }}
+        />
+        {/* Bloco rotacionado */}
+        <div
+          className="absolute w-16 h-12 rounded-sm border border-white/[0.08] bg-white/[0.03] animate-float-rotate motion-reduce:animate-none"
+          style={{ bottom: "20%", right: "10%", animationDelay: "0.5s" }}
+        />
+        {/* Accent pequeno */}
+        <div
+          className="absolute w-5 h-5 rounded-sm bg-turquoise/10 animate-pulse-subtle motion-reduce:animate-none"
+          style={{ top: "35%", right: "25%", animationDelay: "1.5s" }}
+        />
+        {/* Grade 2x2 (pavers) */}
+        <div
+          className="absolute w-24 h-24 rounded-sm animate-float motion-reduce:animate-none"
+          style={{ top: "55%", right: "5%", animationDuration: "9s", animationDelay: "3s" }}
+        >
+          <div className="grid grid-cols-2 gap-1.5 w-full h-full">
+            <div className="rounded-sm border border-white/[0.06] bg-white/[0.02]" />
+            <div className="rounded-sm border border-white/[0.06] bg-white/[0.02]" />
+            <div className="rounded-sm border border-white/[0.06] bg-white/[0.02]" />
+            <div className="rounded-sm border border-white/[0.06] bg-white/[0.02]" />
+          </div>
+        </div>
+      </div>
+
       <div className="container relative z-10">
         {/* Back Link com animação de entrada */}
         {backLink && (
